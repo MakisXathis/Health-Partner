@@ -14,9 +14,11 @@ namespace Main_Health_Partner
     {
         public Form1()
         {
+           
             InitializeComponent();
             Login login = new Login();
             login.ShowDialog();
+
         }
     }
 }

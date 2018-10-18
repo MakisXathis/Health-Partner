@@ -21,5 +21,21 @@ namespace Main_Health_Partner
         {
             this.Dispose();
         }
+        public bool check()
+        {
+            bool p = false;
+            if ((textBoxUsername.Text == "1") & (textBoxPassword.Text == "1")) {
+                return true;
+            }
+            return p;
+        }
+
+        private void buttonLogIn_Click(object sender, EventArgs e)
+        {
+            Form1 mainForm = new Form1();
+            this.Hide();
+            mainForm.ShowDialog();
+            this.Close();
+        }
     }
 }
