@@ -10,13 +10,16 @@ using System.Windows.Forms;
 
 namespace Main_Health_Partner
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
-        public Form1()
+        public Login()
         {
             InitializeComponent();
-            Login login = new Login();
-            login.ShowDialog();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
