@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Main_Health_Partner
 {
-    public partial class Form_Main : Form
+    public partial class About : Form
     {
-        public Form_Main()
+        public About()
         {
-           
             InitializeComponent();
-            Application.EnableVisualStyles();      
-            Login login = new Login();
-            login.StartPosition = FormStartPosition.CenterScreen;
-            login.ShowDialog();
         }
     }
 }

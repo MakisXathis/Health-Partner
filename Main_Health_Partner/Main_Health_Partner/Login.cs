@@ -15,27 +15,39 @@ namespace Main_Health_Partner
         public Login()
         {
             InitializeComponent();
+           
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
-        public bool check()
+        public void check()
         {
             bool p = false;
-            if ((textBoxUsername.Text == "1") & (textBoxPassword.Text == "1")) {
-                return true;
+            if ((textBoxUsername.Text.CompareTo("1"))>1 & (textBoxPassword.Text.CompareTo("1"))>1) {
+                Form_Main main = new Form_Main();
+                main.Show();
+                this.Hide();
             }
-            return p;
+            else
+            {
+                MessageBox.Show("Wrong Username/Password","Try again", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            Form1 mainForm = new Form1();
+            check();
             this.Hide();
-            mainForm.ShowDialog();
             this.Close();
+        }
+
+        private void buttonNewAccount_Click(object sender, EventArgs e)
+        {
+            Sign_In_Form sif = new Sign_In_Form();
+            sif.ShowDialog();
         }
     }
 }
