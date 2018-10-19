@@ -20,6 +20,7 @@ namespace Main_Health_Partner
             Login login = new Login();
             login.StartPosition = FormStartPosition.CenterScreen;
             login.ShowDialog();
+            
         }
 
         private void buttonAbout_Click(object sender, EventArgs e)
@@ -27,6 +28,7 @@ namespace Main_Health_Partner
             About ab = new About();
             
             ab.ShowDialog();
+           
         }
     }
 }
