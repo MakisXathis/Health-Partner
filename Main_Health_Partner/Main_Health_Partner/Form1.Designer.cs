@@ -35,7 +35,9 @@
             this.tabPageSessure = new System.Windows.Forms.TabPage();
             this.tabPageProgress = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.buttonAbout = new System.Windows.Forms.Button();
             this.Profile.SuspendLayout();
+            this.tabPageProfile.SuspendLayout();
             this.SuspendLayout();
             // 
             // Profile
@@ -52,6 +54,7 @@
             // tabPageProfile
             // 
             this.tabPageProfile.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tabPageProfile.Controls.Add(this.buttonAbout);
             this.tabPageProfile.Location = new System.Drawing.Point(4, 22);
             this.tabPageProfile.Name = "tabPageProfile";
             this.tabPageProfile.Padding = new System.Windows.Forms.Padding(3);
@@ -85,6 +88,16 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "Logo.png");
             // 
+            // buttonAbout
+            // 
+            this.buttonAbout.Location = new System.Drawing.Point(709, 6);
+            this.buttonAbout.Name = "buttonAbout";
+            this.buttonAbout.Size = new System.Drawing.Size(84, 38);
+            this.buttonAbout.TabIndex = 0;
+            this.buttonAbout.Text = "About";
+            this.buttonAbout.UseVisualStyleBackColor = true;
+            this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -96,6 +109,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Health Partner";
             this.Profile.ResumeLayout(false);
+            this.tabPageProfile.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -107,6 +121,7 @@
         private System.Windows.Forms.TabPage tabPageSessure;
         private System.Windows.Forms.TabPage tabPageProgress;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button buttonAbout;
     }
 }
 

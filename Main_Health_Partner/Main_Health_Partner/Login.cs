@@ -22,24 +22,19 @@ namespace Main_Health_Partner
         {
             this.Dispose();
         }
-        public void check()
+
+        private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            bool p = false;
-            if ((textBoxUsername.Text.CompareTo("1"))>1 & (textBoxPassword.Text.CompareTo("1"))>1) {
+            if (((textBoxUsername.Text.CompareTo("1")) > 1) & ((textBoxPassword.Text.CompareTo("1")) > 1))
+            {
                 Form_Main main = new Form_Main();
                 main.Show();
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("Wrong Username/Password","Try again", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Wrong Username/Password", "Try again", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
-        }
-
-        private void buttonLogIn_Click(object sender, EventArgs e)
-        {
-            check();
             this.Hide();
             this.Close();
         }

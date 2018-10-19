@@ -56,7 +56,7 @@
             // 
             // panelLeft
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panelLeft.BackColor = System.Drawing.Color.SkyBlue;
             this.panelLeft.Controls.Add(this.label1);
             this.panelLeft.Controls.Add(this.labelSlogan);
             this.panelLeft.Controls.Add(this.pictureBox1);
@@ -88,7 +88,7 @@
             // 
             // panelRight
             // 
-            this.panelRight.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panelRight.BackColor = System.Drawing.Color.Silver;
             this.panelRight.Controls.Add(this.pictureBox4);
             this.panelRight.Controls.Add(this.pictureBox3);
             this.panelRight.Controls.Add(this.pictureBox2);

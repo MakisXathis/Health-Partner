@@ -21,5 +21,12 @@ namespace Main_Health_Partner
             login.StartPosition = FormStartPosition.CenterScreen;
             login.ShowDialog();
         }
+
+        private void buttonAbout_Click(object sender, EventArgs e)
+        {
+            About ab = new About();
+            
+            ab.ShowDialog();
+        }
     }
 }
