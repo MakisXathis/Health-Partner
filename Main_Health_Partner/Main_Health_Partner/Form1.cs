@@ -13,6 +13,18 @@ namespace Main_Health_Partner
 {
     public partial class Form_Main : Form
     {
+
+        //Food attributes attributes to search by
+        String maxCalories = "100", minCalories = "0", minProtein = "0", maxProtein = "100", minFat = "0", maxFat = "100", minCarbs = "0", maxCarbs = "500";
+
+        //Meal Plan attributes to search by
+        String timeFrame = "week", targetCalories = "3000", diet;
+
+        //Results from foodsearch
+        Food[] f;
+
+
+
         public Form_Main()
         {
            
@@ -67,6 +79,20 @@ namespace Main_Health_Partner
             //myReader = myCommand.ExecuteReader();                    
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RESTClient rClient = new RESTClient();
+
+            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBox2.Text + "&offset=0&number=10&maxCalories=" + maxCalories + "&minProtein=" + minProtein + "&maxProtein=" + maxProtein + "&minFat=" + minFat + "&maxFat=" + maxFat + "&minCarbs=" + minCarbs + "&maxCarbs=" + maxCarbs + "&minCalories=" + minCalories;
+
+            f = rClient.makeFoodRequest();
+
+            for(int i = 0 ; i < 10 ; i++) {
+                Console.WriteLine(f[i].toString());
+            }
+            
         }
     }
 }
