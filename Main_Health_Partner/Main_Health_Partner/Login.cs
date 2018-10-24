@@ -15,6 +15,7 @@ namespace Main_Health_Partner
     public partial class Login : Form
     {
         string connectionString;
+        public static string username;
         public Login()
         {
             InitializeComponent();          
@@ -27,14 +28,19 @@ namespace Main_Health_Partner
             Application.Exit();
             
         }
+        public static string recby
+        {
 
+            get { return username; }
+            set { username = value; }
+        }
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
             SqlConnection sql = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MyDatabase.mdf;Integrated Security=True");
             string user = textBoxUsername.Text;
             string passwd = textBoxPassword.Text;
             
-            using (SqlCommand Strquer = new SqlCommand("select * from dbo.users where @username = '" + user + "' and @password = '" + passwd+"'", sql))
+            using (SqlCommand Strquer = new SqlCommand("select * from dbo.myusers where @username = '" + user + "' and @password = '" + passwd+"'", sql))
             {
                 try
                 {
@@ -49,9 +55,14 @@ namespace Main_Health_Partner
                 SqlDataReader dr = Strquer.ExecuteReader();
                 if (dr.HasRows)
                 {
-                    MessageBox.Show("sql works");
+                    recby = user;
+                    MessageBox.Show("sql works");                  
+
+                    sql.Close();
+                    dr.Close();
                     this.Hide();
                     this.Dispose();
+
                 }
                 else
                 {
