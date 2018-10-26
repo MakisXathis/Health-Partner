@@ -14,10 +14,37 @@ namespace Main_Health_Partner
 {
     public partial class Form_Main : Form
     {
-
         //Food attributes attributes to search by
         String maxCalories = "100", minCalories = "0", minProtein = "0", maxProtein = "100", minFat = "0", maxFat = "100", minCarbs = "0", maxCarbs = "500";
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            RESTClient rClient = new RESTClient();
+
+            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxSearch.Text + "&offset=0&number=10&maxCalories=" + maxCalories + "&minProtein=" + minProtein + "&maxProtein=" + maxProtein + "&minFat=" + minFat + "&maxFat=" + maxFat + "&minCarbs=" + minCarbs + "&maxCarbs=" + maxCarbs + "&minCalories=" + minCalories;
+
+            f = rClient.makeFoodRequest();
+            string s = f[0].ToString();
+
+
+            //Obtain a reference to the newly created DataGridViewRow 
+
+            dataGridViewFood.RowTemplate.Height = 80;
+            //Now this won't fail since the row and columns exist 
+            DataGridViewRow row = new DataGridViewRow();
+            row.CreateCells(dataGridViewFood);  // this line was missing
+            row.Cells[0].Value = f[0].getId();
+            row.Cells[1].Value = f[0].getName();
+            row.Cells[2].Value = f[0].getImg();
+            dataGridViewFood.Rows.Add(row);
+            
+            int RowIndex = dataGridViewFood.RowCount - 1;
+            DataGridViewRow R = dataGridViewFood.Rows[RowIndex];
+
+            //dataGridViewFood.Rows[index].Cells["Id"].Value = f[0].getId();
+           // dataGridViewFood.Rows[index].Cells["Name"].Value = f[0].getName();
+            //dataGridViewFood.Rows[index].Cells["Image"].Value = f[0].getImg();
+        }
         //Meal Plan attributes to search by
         String timeFrame = "week", targetCalories = "3000", diet;
 
@@ -86,7 +113,7 @@ namespace Main_Health_Partner
         {
             RESTClient rClient = new RESTClient();
 
-            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBox2.Text + "&offset=0&number=10&maxCalories=" + maxCalories + "&minProtein=" + minProtein + "&maxProtein=" + maxProtein + "&minFat=" + minFat + "&maxFat=" + maxFat + "&minCarbs=" + minCarbs + "&maxCarbs=" + maxCarbs + "&minCalories=" + minCalories;
+            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxSearch.Text + "&offset=0&number=10&maxCalories=" + maxCalories + "&minProtein=" + minProtein + "&maxProtein=" + maxProtein + "&minFat=" + minFat + "&maxFat=" + maxFat + "&minCarbs=" + minCarbs + "&maxCarbs=" + maxCarbs + "&minCalories=" + minCalories;
 
             f = rClient.makeFoodRequest();
 

@@ -62,12 +62,16 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.tabPageSearch = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewFood = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.foodBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.myusersTableAdapter = new Main_Health_Partner.MyDatabaseMyUsersTableAdapters.myusersTableAdapter();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.Profile.SuspendLayout();
             this.tabPageProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -76,7 +80,8 @@
             this.tabPageSessure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPageSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Profile
@@ -355,9 +360,9 @@
             // tabPageSearch
             // 
             this.tabPageSearch.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.tabPageSearch.Controls.Add(this.dataGridView3);
+            this.tabPageSearch.Controls.Add(this.dataGridViewFood);
             this.tabPageSearch.Controls.Add(this.button1);
-            this.tabPageSearch.Controls.Add(this.textBox2);
+            this.tabPageSearch.Controls.Add(this.textBoxSearch);
             this.tabPageSearch.Controls.Add(this.label7);
             this.tabPageSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tabPageSearch.Location = new System.Drawing.Point(4, 22);
@@ -366,13 +371,21 @@
             this.tabPageSearch.TabIndex = 2;
             this.tabPageSearch.Text = "Search";
             // 
-            // dataGridView3
+            // dataGridViewFood
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(0, 73);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(793, 349);
-            this.dataGridView3.TabIndex = 3;
+            this.dataGridViewFood.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.dataGridViewFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFood.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Name,
+            this.Image});
+            this.dataGridViewFood.GridColor = System.Drawing.Color.LightSteelBlue;
+            this.dataGridViewFood.Location = new System.Drawing.Point(0, 73);
+            this.dataGridViewFood.Name = "dataGridViewFood";
+            this.dataGridViewFood.RowTemplate.Height = 50;
+            this.dataGridViewFood.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewFood.Size = new System.Drawing.Size(793, 349);
+            this.dataGridViewFood.TabIndex = 3;
             // 
             // button1
             // 
@@ -382,13 +395,14 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Press";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // textBox2
+            // textBoxSearch
             // 
-            this.textBox2.Location = new System.Drawing.Point(134, 34);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(260, 20);
-            this.textBox2.TabIndex = 1;
+            this.textBoxSearch.Location = new System.Drawing.Point(134, 34);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(260, 20);
+            this.textBoxSearch.TabIndex = 1;
             // 
             // label7
             // 
@@ -398,6 +412,10 @@
             this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "Food search :";
+            // 
+            // foodBindingSource
+            // 
+            this.foodBindingSource.DataSource = typeof(Main_Health_Partner.Food);
             // 
             // imageList1
             // 
@@ -409,12 +427,35 @@
             // 
             this.myusersTableAdapter.ClearBeforeFill = true;
             // 
+            // Id
+            // 
+            this.Id.DividerWidth = 5;
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 40;
+            this.Id.Name = "Id";
+            // 
+            // Name
+            // 
+            this.Name.DividerWidth = 5;
+            this.Name.HeaderText = "Name";
+            this.Name.MinimumWidth = 45;
+            this.Name.Name = "Name";
+            // 
+            // Image
+            // 
+            this.Image.DividerWidth = 5;
+            this.Image.HeaderText = "Image";
+            this.Image.MinimumWidth = 55;
+            this.Image.Name = "Image";
+            this.Image.Width = 200;
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Profile);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -431,7 +472,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPageSearch.ResumeLayout(false);
             this.tabPageSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -473,9 +515,13 @@
         private System.Windows.Forms.TabPage tabPageSearch;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridViewFood;
+        private System.Windows.Forms.BindingSource foodBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewImageColumn Image;
     }
 }
 

@@ -27,8 +27,10 @@ namespace Main_Health_Partner
         {
             using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MyDatabase.mdf;Integrated Security=True"))
             {
-                SqlCommand CmdSql = new SqlCommand("INSERT INTO dbo.myusers (username, password, name, surname, age, weight, height) VALUES (@username, @password, @name, @surname, @age, @weight, @height)", conn);
                 conn.Open();
+                SqlCommand CmdSql = new SqlCommand("INSERT INTO dbo.myusers (Id,username, password, name, surname, age, weight, height) VALUES (@Id,@username, @password, @name, @surname, @age, @weight, @height)", conn);
+                
+                CmdSql.Parameters.AddWithValue("@Id", 6);
                 CmdSql.Parameters.AddWithValue("@username", textBoxUsername.Text);
                 CmdSql.Parameters.AddWithValue("@password", textBoxPasswd.Text);
                 CmdSql.Parameters.AddWithValue("@name", textBoxName.Text);

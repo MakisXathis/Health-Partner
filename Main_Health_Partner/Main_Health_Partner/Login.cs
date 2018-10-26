@@ -100,16 +100,7 @@ namespace Main_Health_Partner
             }
         }
                 
-            
-        
-        public void Dispose()
-        {
-            Dispose(true);
 
-            // Use SupressFinalize in case a subclass
-            // of this type implements a finalizer.
-            GC.SuppressFinalize(this);
-        }
 
         private void buttonNewAccount_Click(object sender, EventArgs e)
         {
