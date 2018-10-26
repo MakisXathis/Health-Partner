@@ -189,11 +189,11 @@
     <None Include="Resources\4e3ad7aee69e5da6de7e91b63e3952de-turn-off-stroke-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MyDatabase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Compile Include="MyDatabase.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Content Include="MyDatabase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>MyDatabase.mdf</DependentUpon>
     </Content>
   </ItemGroup>

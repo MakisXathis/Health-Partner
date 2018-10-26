@@ -32,6 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             this.Profile = new System.Windows.Forms.TabControl();
             this.tabPageProfile = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.myusersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.myDatabaseMyUsers = new Main_Health_Partner.MyDatabaseMyUsers();
             this.textBoxHeight = new System.Windows.Forms.TextBox();
             this.textBoxWeight = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
@@ -46,36 +57,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonAbout = new System.Windows.Forms.Button();
             this.tabPageSessure = new System.Windows.Forms.TabPage();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.myDatabaseMyUsers = new Main_Health_Partner.MyDatabaseMyUsers();
-            this.myusersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.myusersTableAdapter = new Main_Health_Partner.MyDatabaseMyUsersTableAdapters.myusersTableAdapter();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageSearch = new System.Windows.Forms.TabPage();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.tabPageSearch = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.myusersTableAdapter = new Main_Health_Partner.MyDatabaseMyUsersTableAdapters.myusersTableAdapter();
             this.Profile.SuspendLayout();
             this.tabPageProfile.SuspendLayout();
-            this.tabPageSessure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabaseMyUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource)).BeginInit();
-            this.tabPageSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabaseMyUsers)).BeginInit();
+            this.tabPageSessure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tabPageSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,6 +113,84 @@
             this.tabPageProfile.Size = new System.Drawing.Size(793, 425);
             this.tabPageProfile.TabIndex = 0;
             this.tabPageProfile.Text = "Profile";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.usernameDataGridViewTextBoxColumn,
+            this.passwordDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.surnameDataGridViewTextBoxColumn,
+            this.ageDataGridViewTextBoxColumn,
+            this.weightDataGridViewTextBoxColumn,
+            this.heightDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.myusersBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(451, 104);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 14;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "password";
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // surnameDataGridViewTextBoxColumn
+            // 
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "surname";
+            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            // 
+            // ageDataGridViewTextBoxColumn
+            // 
+            this.ageDataGridViewTextBoxColumn.DataPropertyName = "age";
+            this.ageDataGridViewTextBoxColumn.HeaderText = "age";
+            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
+            // 
+            // weightDataGridViewTextBoxColumn
+            // 
+            this.weightDataGridViewTextBoxColumn.DataPropertyName = "weight";
+            this.weightDataGridViewTextBoxColumn.HeaderText = "weight";
+            this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
+            // 
+            // heightDataGridViewTextBoxColumn
+            // 
+            this.heightDataGridViewTextBoxColumn.DataPropertyName = "height";
+            this.heightDataGridViewTextBoxColumn.HeaderText = "height";
+            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
+            // 
+            // myusersBindingSource
+            // 
+            this.myusersBindingSource.DataMember = "myusers";
+            this.myusersBindingSource.DataSource = this.myDatabaseMyUsers;
+            // 
+            // myDatabaseMyUsers
+            // 
+            this.myDatabaseMyUsers.DataSetName = "MyDatabaseMyUsers";
+            this.myDatabaseMyUsers.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBoxHeight
             // 
@@ -241,93 +319,38 @@
             this.tabPageSessure.TabIndex = 1;
             this.tabPageSessure.Text = "Sessure";
             // 
-            // imageList1
+            // dataGridView2
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Logo.png");
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(36, 85);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(734, 312);
+            this.dataGridView2.TabIndex = 3;
             // 
-            // dataGridView1
+            // label6
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.usernameDataGridViewTextBoxColumn,
-            this.passwordDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.surnameDataGridViewTextBoxColumn,
-            this.ageDataGridViewTextBoxColumn,
-            this.weightDataGridViewTextBoxColumn,
-            this.heightDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.myusersBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(451, 104);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 14;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(81, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(181, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "How many calories to eat every day?";
             // 
-            // myDatabaseMyUsers
+            // textBox1
             // 
-            this.myDatabaseMyUsers.DataSetName = "MyDatabaseMyUsers";
-            this.myDatabaseMyUsers.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.textBox1.Location = new System.Drawing.Point(268, 35);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(219, 20);
+            this.textBox1.TabIndex = 1;
             // 
-            // myusersBindingSource
+            // buttonSearch
             // 
-            this.myusersBindingSource.DataMember = "myusers";
-            this.myusersBindingSource.DataSource = this.myDatabaseMyUsers;
-            // 
-            // myusersTableAdapter
-            // 
-            this.myusersTableAdapter.ClearBeforeFill = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "password";
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // surnameDataGridViewTextBoxColumn
-            // 
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "surname";
-            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
-            // 
-            // ageDataGridViewTextBoxColumn
-            // 
-            this.ageDataGridViewTextBoxColumn.DataPropertyName = "age";
-            this.ageDataGridViewTextBoxColumn.HeaderText = "age";
-            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
-            // 
-            // weightDataGridViewTextBoxColumn
-            // 
-            this.weightDataGridViewTextBoxColumn.DataPropertyName = "weight";
-            this.weightDataGridViewTextBoxColumn.HeaderText = "weight";
-            this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
-            // 
-            // heightDataGridViewTextBoxColumn
-            // 
-            this.heightDataGridViewTextBoxColumn.DataPropertyName = "height";
-            this.heightDataGridViewTextBoxColumn.HeaderText = "height";
-            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
+            this.buttonSearch.Location = new System.Drawing.Point(496, 33);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 0;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
             // 
             // tabPageSearch
             // 
@@ -343,54 +366,13 @@
             this.tabPageSearch.TabIndex = 2;
             this.tabPageSearch.Text = "Search";
             // 
-            // buttonSearch
+            // dataGridView3
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(352, 33);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearch.TabIndex = 0;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(211, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 38);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(184, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "How many calories you want to burn?";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(36, 85);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(734, 312);
-            this.dataGridView2.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(62, 37);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Food search :";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(134, 34);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(260, 20);
-            this.textBox2.TabIndex = 1;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(0, 73);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(793, 349);
+            this.dataGridView3.TabIndex = 3;
             // 
             // button1
             // 
@@ -401,13 +383,31 @@
             this.button1.Text = "Press";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // textBox2
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(0, 73);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(793, 349);
-            this.dataGridView3.TabIndex = 3;
+            this.textBox2.Location = new System.Drawing.Point(134, 34);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(260, 20);
+            this.textBox2.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(62, 37);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Food search :";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Logo.png");
+            // 
+            // myusersTableAdapter
+            // 
+            this.myusersTableAdapter.ClearBeforeFill = true;
             // 
             // Form_Main
             // 
@@ -423,14 +423,14 @@
             this.Profile.ResumeLayout(false);
             this.tabPageProfile.ResumeLayout(false);
             this.tabPageProfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDatabaseMyUsers)).EndInit();
             this.tabPageSessure.ResumeLayout(false);
             this.tabPageSessure.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabaseMyUsers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPageSearch.ResumeLayout(false);
             this.tabPageSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
