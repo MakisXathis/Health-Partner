@@ -22,25 +22,34 @@ namespace Main_Health_Partner
         {
             this.Close();
         }
+        SqlConnection conn;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MyDatabase.mdf;Integrated Security=True"))
+            if (!((textBoxUsername.Text.CompareTo("") | (textBoxPasswd.Text.CompareTo("")) | textBoxName.Text.CompareTo("") | textBoxSurname.Text.CompareTo("") | textBoxAge.Text.CompareTo("") | textBoxWeight.Text.CompareTo("") | textBoxHeight.Text.CompareTo("")) ==0))
             {
-                conn.Open();
-                SqlCommand CmdSql = new SqlCommand("INSERT INTO dbo.myusers (Id,username, password, name, surname, age, weight, height) VALUES (@Id,@username, @password, @name, @surname, @age, @weight, @height)", conn);
-                
-                CmdSql.Parameters.AddWithValue("@Id", 6);
-                CmdSql.Parameters.AddWithValue("@username", textBoxUsername.Text);
-                CmdSql.Parameters.AddWithValue("@password", textBoxPasswd.Text);
-                CmdSql.Parameters.AddWithValue("@name", textBoxName.Text);
-                CmdSql.Parameters.AddWithValue("@surname",textBoxSurname.Text);
-                CmdSql.Parameters.AddWithValue("@age", Convert.ToInt32(textBoxAge.Text));
-                CmdSql.Parameters.AddWithValue("@weight", Convert.ToInt32(textBoxWeight.Text));
-                CmdSql.Parameters.AddWithValue("@height", Convert.ToInt32(textBoxHeight.Text));
-                CmdSql.ExecuteNonQuery();
-                conn.Close();
+                using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\MyDatabase.mdf;Integrated Security=True"))
+                {
+                    conn.Open();
+                    SqlCommand CmdSql = new SqlCommand("INSERT INTO dbo.myusers (username, password, name, surname, age, weight, height) VALUES (@username, @password, @name, @surname, @age, @weight, @height)", conn);
+
+
+                    CmdSql.Parameters.AddWithValue("@username", textBoxUsername.Text);
+                    CmdSql.Parameters.AddWithValue("@password", textBoxPasswd.Text);
+                    CmdSql.Parameters.AddWithValue("@name", textBoxName.Text);
+                    CmdSql.Parameters.AddWithValue("@surname", textBoxSurname.Text);
+                    CmdSql.Parameters.AddWithValue("@age", Convert.ToInt32(textBoxAge.Text));
+                    CmdSql.Parameters.AddWithValue("@weight", Convert.ToInt32(textBoxWeight.Text));
+                    CmdSql.Parameters.AddWithValue("@height", Convert.ToInt32(textBoxHeight.Text));
+                    CmdSql.ExecuteNonQuery();
+                    conn.Close();
+                }
             }
+            else
+            {
+                MessageBox.Show("Fill all the textboxes");
+            }
+           
         }
     }
 }

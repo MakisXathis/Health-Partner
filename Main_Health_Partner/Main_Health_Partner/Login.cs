@@ -36,72 +36,47 @@ namespace Main_Health_Partner
         }
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            SqlConnection sql = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MyDatabase.mdf;Integrated Security=True");
+            
             string user = textBoxUsername.Text;
             string passwd = textBoxPassword.Text;
-            /*
-            using (SqlCommand Strquer = new SqlCommand("select * from dbo.myusers where @username='" + user + "'" + " and @password='" + passwd + "'", sql))
+            if (!((textBoxUsername.Text.CompareTo("") | (textBoxPassword.Text.CompareTo(""))) == 0))
             {
-                try
+                using (SqlConnection sql = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\MyDatabase.mdf;Integrated Security=True"))
                 {
-                    sql.Open();
-
-                    Strquer.Parameters.AddWithValue("@username", user);
-                    Strquer.Parameters.AddWithValue("@password", passwd);
-                    SqlDataReader dr = Strquer.ExecuteReader();
-                    if (dr.HasRows)
+                    try
                     {
-                        recby = user;                       
-                        sql.Close();
-                        dr.Close();
-                        this.Hide();
-                        this.Dispose();
+                        sql.Open();
+                        SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.myusers " +
+                                            "WHERE username like '%"+user+"%' and password like '%"+passwd+"%'", sql);
+                        cmd.Parameters.AddWithValue("@username", textBoxUsername.Text);
+                        cmd.Parameters.AddWithValue("@password", textBoxPassword.Text);
+                        int result = (int)cmd.ExecuteScalar();
+                        if (result > 1)
+                        {
+                            recby = user;
+                            sql.Close();
 
+                            this.Hide();
+                            this.Dispose();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Incorrect login");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Wrong Username/Password", "Try again", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Wrong Username/Password:");
                     }
                 }
-
-                catch (SqlException Ex)
-                {
-                    MessageBox.Show("exception catched");
-                }
-             */
-            using (SqlConnection Connection = sql)
+            }
+            else
             {
-                try
-                {
-                    Connection.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT Count(*) FROM  dbo.myusers "+
-                                        "WHERE @username='"+user+"' and @password='"+passwd+"'", Connection);
-                    cmd.Parameters.AddWithValue("@username", textBoxUsername.Text);
-                    cmd.Parameters.AddWithValue("@password", textBoxPassword.Text);
-                    int result = (int)cmd.ExecuteScalar();
-                    if (result>1)
-                    {
-                        recby = user;
-                        sql.Close();
-                        
-                        this.Hide();
-                        this.Dispose();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Incorrect login");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Unexpected error:" + ex.Message);
-                }
+                MessageBox.Show("Please fill all the textboxes");
             }
         }
                 
-
-
         private void buttonNewAccount_Click(object sender, EventArgs e)
         {
             Sign_In_Form sif = new Sign_In_Form();

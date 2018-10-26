@@ -111,6 +111,8 @@
       <DependentUpon>Sign_In_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="WeekMeal.cs" />
+    <None Include="Resources\businessman-xxl1.png" />
+    <None Include="Resources\images %281%29.jpg" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
