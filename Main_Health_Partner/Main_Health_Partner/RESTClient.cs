@@ -69,7 +69,7 @@ namespace Main_Health_Partner
         }
 
 
-        //DOES NOT WORK PROPERLY YET
+
         public Dictionary<int, WeekMeal> makeMealRequest()
         {
             var jMeal = JsonConvert.DeserializeObject<dynamic>(getResponse(this.endPoint));
@@ -78,19 +78,46 @@ namespace Main_Health_Partner
 
             for (int i = 0; i < 21; i++)
             {
-                var value = JsonConvert.SerializeObject(jMeal.items[i].value);
+                var food = (String)jMeal.items[i].value;
+                String meal = (String)food;
 
 
-                var food = JsonConvert.DeserializeObject<dynamic>(value);
-
-                Console.WriteLine((String)food);
-
-                weeklyPlan.Add((int)jMeal.items[i].day, new WeekMeal((int)food.id, (String)food.title));
-
-                Console.WriteLine((String)food.title);
+                String id = getIdFromPlan(meal);
+                String title = getTitleFromPlan(meal);
+                weeklyPlan.Add(i, new WeekMeal((int)jMeal.items[i].day, id, title));
+                WeekMeal myMeal = new WeekMeal((int)jMeal.items[i].day, id, title);
+                myMeal.ToString();
             }
 
             return weeklyPlan;
+
+        }
+
+        public RecipeInfo makeRecipeInformationRequest()
+        {
+            var jRecipe = JsonConvert.DeserializeObject<dynamic>(getResponse(this.endPoint));
+
+            List<String> ingredients = new List<String>();
+            String Steps = (String)jRecipe.instructions;
+            int i = 0;
+
+
+            do
+            {
+                ingredients.Add((String)jRecipe.extendedIngredients[i].name);
+                i++;
+                try
+                {
+                    String nextOne = (String)jRecipe.extendedIngredients[i].name;
+                }
+                catch
+                {
+                    break;
+                }
+            } while (i >= 0);
+
+
+            return new RecipeInfo(ingredients, Steps);
 
         }
 
@@ -140,6 +167,94 @@ namespace Main_Health_Partner
             }
 
             return strResponseValue;
+        }
+
+
+        //Utility functions
+        private String getIdFromPlan(String s)
+        {
+            char[] arrayId = new char[6];
+            int k = 0;
+            for (int i = 6; i < s.Length; i++)
+            {
+
+                if (s[i] == ',')
+                    break;
+
+                arrayId[i - 6] = s[i];
+
+            }
+
+            for (int i = 0; i < arrayId.Length; i++)
+            {
+                if (arrayId[i] == '\0')
+                {
+                    k = i;
+                    break;
+                }
+                else
+                {
+                    k = i + 1;
+                }
+            }
+
+            char[] FinalId = new char[k];
+
+            for (int i = 0; i < FinalId.Length; i++)
+            {
+                FinalId[i] = arrayId[i];
+            }
+
+
+            String stringId = new string(FinalId);
+            return stringId;
+        }
+
+        private String getTitleFromPlan(String s)
+        {
+            char[] arrayTitle = new char[80];
+            int j = 0;
+            int k = 0;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == ':')
+                {
+                    j = j + 1;
+                }
+
+
+                if (s[i] == ':' && j == 3)
+                    do
+                    {
+                        arrayTitle[k] = s[i + k + 2];
+                        k++;
+
+                    } while (s[i + k + 2] != '\"');
+                if (k > 0)
+                    break;
+            }
+
+            for (int i = 0; i < arrayTitle.Length; i++)
+            {
+                if (arrayTitle[i] == '\0')
+                {
+                    k = i;
+                    break;
+                }
+            }
+
+            char[] FinalTitle = new char[k];
+
+            for (int i = 0; i < FinalTitle.Length; i++)
+            {
+                FinalTitle[i] = arrayTitle[i];
+            }
+
+
+            String Title = new String(FinalTitle);
+
+            return Title;
         }
 
     }

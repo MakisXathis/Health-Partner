@@ -9,17 +9,19 @@ namespace Main_Health_Partner
     class WeekMeal
     {
 
-        int id { get; set; }
+        int day { get; set; }
+        String id { get; set; }
         String title { get; set; }
 
-        public WeekMeal(int i, String name)
+        public WeekMeal(int d, String i, String name)
         {
+            day = d;
             id = i;
             title = name;
         }
 
 
-        public void setId(int i)
+        public void setId(String i)
         {
             id = i;
         }
@@ -29,7 +31,12 @@ namespace Main_Health_Partner
             title = name;
         }
 
-        public int getId()
+        public void setDay(int d)
+        {
+            day = d;
+        }
+
+        public String getId()
         {
             return id;
         }
@@ -39,7 +46,17 @@ namespace Main_Health_Partner
             return title;
         }
 
+        public int getDay()
+        {
+            return day;
+        }
 
+        public void ToString()
+        {
+            Console.WriteLine("Day : " + day +
+                "\nId : " + id +
+                "\nName : " + title);
+        }
 
     }
 }
