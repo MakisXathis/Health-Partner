@@ -41,9 +41,6 @@ namespace Main_Health_Partner
             int RowIndex = dataGridViewFood.RowCount - 1;
             DataGridViewRow R = dataGridViewFood.Rows[RowIndex];
 
-            //dataGridViewFood.Rows[index].Cells["Id"].Value = f[0].getId();
-           // dataGridViewFood.Rows[index].Cells["Name"].Value = f[0].getName();
-            //dataGridViewFood.Rows[index].Cells["Image"].Value = f[0].getImg();
         }
         //Meal Plan attributes to search by
         String timeFrame = "week", targetCalories = "3000", diet;
