@@ -39,19 +39,18 @@ namespace Main_Health_Partner
             
             string user = textBoxUsername.Text;
             string passwd = textBoxPassword.Text;
-            if (!((textBoxUsername.Text.CompareTo("") | (textBoxPassword.Text.CompareTo(""))) == 0))
-            {
+            
                 using (SqlConnection sql = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\MyDatabase.mdf;Integrated Security=True"))
                 {
                     try
                     {
                         sql.Open();
-                        SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.myusers " +
+                        SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM dbo.myusers " +
                                             "WHERE username like '%"+user+"%' and password like '%"+passwd+"%'", sql);
                         cmd.Parameters.AddWithValue("@username", textBoxUsername.Text);
                         cmd.Parameters.AddWithValue("@password", textBoxPassword.Text);
                         int result = (int)cmd.ExecuteScalar();
-                        if (result > 1)
+                        if (result == 1)
                         {
                             recby = user;
                             sql.Close();
@@ -70,11 +69,8 @@ namespace Main_Health_Partner
                         MessageBox.Show("Wrong Username/Password:");
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Please fill all the textboxes");
-            }
+            
+            
         }
                 
         private void buttonNewAccount_Click(object sender, EventArgs e)
