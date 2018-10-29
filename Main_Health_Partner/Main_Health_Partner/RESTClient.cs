@@ -16,6 +16,7 @@ namespace Main_Health_Partner
         DELETE
     }
 
+
     class RESTClient
     {
         public string endPoint { get; set; }
@@ -43,7 +44,7 @@ namespace Main_Health_Partner
 
 
 
-
+        
         public Nutrients makeNutrientsRequest()
         {
 
@@ -90,8 +91,9 @@ namespace Main_Health_Partner
             }
 
             return weeklyPlan;
-
         }
+        
+
 
         public RecipeInfo makeRecipeInformationRequest()
         {
@@ -116,10 +118,25 @@ namespace Main_Health_Partner
                 }
             } while (i >= 0);
 
-
             return new RecipeInfo(ingredients, Steps);
-
         }
+
+
+        //Returns a recipe according to a what the user wants
+        public Recipe[] makeRecipeRequest()
+        {
+            var jRecipe = JsonConvert.DeserializeObject<dynamic>(getResponse(this.endPoint));
+
+            Recipe[] recipes = new Recipe[10];
+
+            for( int i = 0; i < 10; i++)
+            {
+                recipes[i] = new Recipe((int)jRecipe.results[i].id, (String)jRecipe.results[i].title, (int)jRecipe.results[i].readyInMinutes, (int)jRecipe.results[i].servings);
+            }
+
+            return recipes;
+        }
+
 
 
         //Returns an image from a webpage
@@ -210,6 +227,7 @@ namespace Main_Health_Partner
             return stringId;
         }
 
+
         private String getTitleFromPlan(String s)
         {
             char[] arrayTitle = new char[80];
@@ -235,6 +253,7 @@ namespace Main_Health_Partner
                     break;
             }
 
+
             for (int i = 0; i < arrayTitle.Length; i++)
             {
                 if (arrayTitle[i] == '\0')
@@ -243,6 +262,7 @@ namespace Main_Health_Partner
                     break;
                 }
             }
+
 
             char[] FinalTitle = new char[k];
 

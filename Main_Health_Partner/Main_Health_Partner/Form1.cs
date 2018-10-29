@@ -15,7 +15,7 @@ namespace Main_Health_Partner
     public partial class Form_Main : Form
     {
         //Food attributes attributes to search by
-        //String maxCalories = "100", minCalories = "0", minProtein = "0", maxProtein = "100", minFat = "0", maxFat = "100", minCarbs = "0", maxCarbs = "500";
+        String maxCalories = "100", minCalories = "0", minProtein = "0", maxProtein = "100", minFat = "0", maxFat = "100", minCarbs = "0", maxCarbs = "500";
 
         private void button1_Click_1(object sender, EventArgs e)
         {
