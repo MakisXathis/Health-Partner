@@ -15,7 +15,7 @@ namespace Main_Health_Partner
     public partial class Form_Main : Form
     {
         //Food attributes attributes to search by
-        //String maxCalories = "100", minCalories = "0", minProtein = "0", maxProtein = "100", minFat = "0", maxFat = "100", minCarbs = "0", maxCarbs = "500";
+        String maxCalories = "100", minCalories = "0", minProtein = "0", maxProtein = "100", minFat = "0", maxFat = "100", minCarbs = "0", maxCarbs = "500";
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -24,24 +24,81 @@ namespace Main_Health_Partner
             rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxSearch.Text + "&offset=0&number=10&maxCalories=" + textBoxMaxCalories.Text + "&minProtein=" + textBoxMinProtein.Text + "&maxProtein=" + textBoxMaxProtein.Text+ "&minFat=" + textBoxMinFat.Text + "&maxFat=" + textBoxMaxFat.Text + "&minCarbs=" + textBoxMinCarbs.Text + "&maxCarbs=" + textBoxMaxCarbs.Text + "&minCalories=" + textBoxMinCalories.Text;
 
             f = rClient.makeFoodRequest();
-            string s = f[0].ToString();
-
-
-            //Obtain a reference to the newly created DataGridViewRow 
-
-            dataGridViewFood.RowTemplate.Height = 80;
-            //Now this won't fail since the row and columns exist 
-            DataGridViewRow row = new DataGridViewRow();
-            row.CreateCells(dataGridViewFood);  // this line was missing
-            row.Cells[0].Value = f[0].getId();
-            row.Cells[1].Value = f[0].getName();
-            row.Cells[2].Value = f[0].getImg();
-            dataGridViewFood.Rows.Add(row);
+            dataGridViewFood.RowTemplate.Height = 150;          
             
+            for (int i = 0; i < f.Length; i++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridViewFood);
+                row.Cells[0].Value = f[i].getId();
+                row.Cells[1].Value = f[i].getName();
+                row.Cells[2].Value = f[i].getImg();
+                
+                dataGridViewFood.Rows.Add(row);
+            }
             int RowIndex = dataGridViewFood.RowCount - 1;
             DataGridViewRow R = dataGridViewFood.Rows[RowIndex];
+        }
+
+        private void tabPageRecipe_Click(object sender, EventArgs e)
+        {
 
         }
+        Dictionary<int,WeekMeal> meal;
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            
+            RESTClient rClient = new RESTClient();
+            rClient.endPoint = " https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate?timeFrame=" + timeFrame + "&targetCalories=" + targetCalories ;
+            meal = rClient.makeMealRequest();
+
+            for (int i = 0; i <21; i++)
+            {
+                meal[i].ToString();
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridViewSessure);
+                row.Cells[0].Value = meal[i].getId();
+                row.Cells[1].Value = meal[i].getDay();
+                row.Cells[2].Value = meal[i].getName();
+                dataGridViewSessure.Rows.Add(row);
+            }
+            int RowIndex = dataGridViewSessure.RowCount - 1;
+            DataGridViewRow R = dataGridViewSessure.Rows[RowIndex];
+        }
+        
+        private void dataGridViewSessure_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            RESTClient rClient = new RESTClient();
+            int rowindex = dataGridViewSessure.CurrentCell.RowIndex;
+            int columnindex = dataGridViewSessure.CurrentCell.ColumnIndex;
+         
+            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + dataGridViewSessure.Rows[rowindex].Cells[columnindex].Value.ToString()+ "/information"; 
+            RecipeInfo ri = rClient.makeRecipeInformationRequest();
+            Info_Recipe ir = new Info_Recipe();
+            ir.ShowDialog();
+            getRecipeInfo = ri.getIngredients().ToString();
+            getRecipesteps = ri.getSteps().ToString();
+        }
+        public static string recipeingredients;
+        public static string recipesteps;
+        public static string getRecipeInfo
+        {
+
+            get { return recipeingredients; }
+            set { recipeingredients = value; }
+        }
+        public static string getRecipesteps
+        {
+
+            get { return recipesteps; }
+            set { recipesteps = value; }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //Meal Plan attributes to search by
         String timeFrame = "week", targetCalories = "3000", diet;
 
