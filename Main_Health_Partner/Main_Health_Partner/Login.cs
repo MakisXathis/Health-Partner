@@ -16,7 +16,6 @@ namespace Main_Health_Partner
     {
         string connectionString;
         public static string username;
-        public static string password;
         public Login()
         {
             InitializeComponent();
@@ -35,32 +34,25 @@ namespace Main_Health_Partner
             get { return username; }
             set { username = value; }
         }
-        public static string recby2
-        {
-
-            get { return password; }
-            set { password = value; }
-        }
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
             
             string user = textBoxUsername.Text;
             string passwd = textBoxPassword.Text;
             
-                using (SqlConnection sql = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\Documents\GitHub\Health-Partner\MyDatabase.mdf;Integrated Security=True"))
+                using (SqlConnection sql = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\MyDatabase.mdf;Integrated Security=True"))
                 {
                     try
                     {
                         sql.Open();
                         SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM dbo.myusers " +
-                                            "WHERE username like '"+user+"' and password like '"+passwd+"'", sql);
+                                            "WHERE username like '%"+user+"%' and password like '%"+passwd+"%'", sql);
                         cmd.Parameters.AddWithValue("@username", textBoxUsername.Text);
                         cmd.Parameters.AddWithValue("@password", textBoxPassword.Text);
                         int result = (int)cmd.ExecuteScalar();
                         if (result == 1)
                         {
                             recby = user;
-                            recby2 = passwd;
                             sql.Close();
 
                             this.Hide();

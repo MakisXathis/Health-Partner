@@ -58,7 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonAbout = new System.Windows.Forms.Button();
             this.tabPageSessure = new System.Windows.Forms.TabPage();
-            this.buttonSaveSessure = new System.Windows.Forms.Button();
             this.dataGridViewSessure = new System.Windows.Forms.DataGridView();
             this.IdSessure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Day = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,10 +100,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.dataGridViewRecipe = new System.Windows.Forms.DataGridView();
-            this.Id_Recipe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Recipe_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Minutes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Servings = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxRecipe = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -164,8 +159,8 @@
             // 
             // pictureBox1
             // 
-            //this.pictureBox1.Image = global::Main_Health_Partner.Properties.Resources.businessman_xxl1;
-            this.pictureBox1.Location = new System.Drawing.Point(447, 61);
+            this.pictureBox1.Image = global::Main_Health_Partner.Properties.Resources.businessman_xxl1;
+            this.pictureBox1.Location = new System.Drawing.Point(429, 52);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(261, 257);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -292,13 +287,12 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(217, 315);
+            this.buttonSave.Location = new System.Drawing.Point(237, 315);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonEdit
             // 
@@ -308,7 +302,6 @@
             this.buttonEdit.TabIndex = 7;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
-            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // label5
             // 
@@ -368,7 +361,6 @@
             // tabPageSessure
             // 
             this.tabPageSessure.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.tabPageSessure.Controls.Add(this.buttonSaveSessure);
             this.tabPageSessure.Controls.Add(this.dataGridViewSessure);
             this.tabPageSessure.Controls.Add(this.label6);
             this.tabPageSessure.Controls.Add(this.textBox1);
@@ -380,16 +372,6 @@
             this.tabPageSessure.TabIndex = 1;
             this.tabPageSessure.Text = "Sessure";
             // 
-            // buttonSaveSessure
-            // 
-            this.buttonSaveSessure.Location = new System.Drawing.Point(610, 33);
-            this.buttonSaveSessure.Name = "buttonSaveSessure";
-            this.buttonSaveSessure.Size = new System.Drawing.Size(84, 23);
-            this.buttonSaveSessure.TabIndex = 4;
-            this.buttonSaveSessure.Text = "Save";
-            this.buttonSaveSessure.UseVisualStyleBackColor = true;
-            this.buttonSaveSessure.Click += new System.EventHandler(this.buttonSaveSessure_Click);
-            // 
             // dataGridViewSessure
             // 
             this.dataGridViewSessure.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -397,9 +379,9 @@
             this.IdSessure,
             this.Day,
             this.FoodSessure});
-            this.dataGridViewSessure.Location = new System.Drawing.Point(0, 85);
+            this.dataGridViewSessure.Location = new System.Drawing.Point(36, 85);
             this.dataGridViewSessure.Name = "dataGridViewSessure";
-            this.dataGridViewSessure.Size = new System.Drawing.Size(790, 340);
+            this.dataGridViewSessure.Size = new System.Drawing.Size(734, 312);
             this.dataGridViewSessure.TabIndex = 3;
             this.dataGridViewSessure.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSessure_CellDoubleClick);
             // 
@@ -797,37 +779,10 @@
             // dataGridViewRecipe
             // 
             this.dataGridViewRecipe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRecipe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id_Recipe,
-            this.Recipe_Name,
-            this.Minutes,
-            this.Servings});
             this.dataGridViewRecipe.Location = new System.Drawing.Point(0, 125);
             this.dataGridViewRecipe.Name = "dataGridViewRecipe";
-            this.dataGridViewRecipe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewRecipe.Size = new System.Drawing.Size(793, 304);
             this.dataGridViewRecipe.TabIndex = 2;
-            this.dataGridViewRecipe.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecipe_CellDoubleClick);
-            // 
-            // Id_Recipe
-            // 
-            this.Id_Recipe.HeaderText = "Id";
-            this.Id_Recipe.Name = "Id_Recipe";
-            // 
-            // Recipe_Name
-            // 
-            this.Recipe_Name.HeaderText = "Name";
-            this.Recipe_Name.Name = "Recipe_Name";
-            // 
-            // Minutes
-            // 
-            this.Minutes.HeaderText = "Minutes";
-            this.Minutes.Name = "Minutes";
-            // 
-            // Servings
-            // 
-            this.Servings.HeaderText = "Servings";
-            this.Servings.Name = "Servings";
             // 
             // textBoxRecipe
             // 
@@ -969,11 +924,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdSessure;
         private System.Windows.Forms.DataGridViewTextBoxColumn Day;
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodSessure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Recipe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Recipe_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Minutes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Servings;
-        private System.Windows.Forms.Button buttonSaveSessure;
     }
 }
 

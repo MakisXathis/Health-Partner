@@ -26,8 +26,8 @@ namespace Main_Health_Partner.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Kostas\\source\\repos\\" +
-            "Health-Partner\\MyDatabase.mdf;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\MyDatabase.md" +
+            "f;Integrated Security=True")]
         public string MyDatabaseConnectionString {
             get {
                 return ((string)(this["MyDatabaseConnectionString"]));

@@ -24,9 +24,8 @@ namespace Main_Health_Partner
             rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxSearch.Text + "&offset=0&number=10&maxCalories=" + textBoxMaxCalories.Text + "&minProtein=" + textBoxMinProtein.Text + "&maxProtein=" + textBoxMaxProtein.Text+ "&minFat=" + textBoxMinFat.Text + "&maxFat=" + textBoxMaxFat.Text + "&minCarbs=" + textBoxMinCarbs.Text + "&maxCarbs=" + textBoxMaxCarbs.Text + "&minCalories=" + textBoxMinCalories.Text;
 
             f = rClient.makeFoodRequest();
-            dataGridViewFood.RowTemplate.Height = 150;
-            dataGridViewFood.Rows.Clear();
-            dataGridViewFood.Refresh();
+            dataGridViewFood.RowTemplate.Height = 150;          
+            
             for (int i = 0; i < f.Length; i++)
             {
                 DataGridViewRow row = new DataGridViewRow();
@@ -52,8 +51,7 @@ namespace Main_Health_Partner
             RESTClient rClient = new RESTClient();
             rClient.endPoint = " https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate?timeFrame=" + timeFrame + "&targetCalories=" + targetCalories ;
             meal = rClient.makeMealRequest();
-            dataGridViewSessure.Rows.Clear();
-            dataGridViewSessure.Refresh();
+
             for (int i = 0; i <21; i++)
             {
                 meal[i].ToString();
@@ -78,7 +76,7 @@ namespace Main_Health_Partner
             RecipeInfo ri = rClient.makeRecipeInformationRequest();
             Info_Recipe ir = new Info_Recipe();
             ir.ShowDialog();
-            getRecipeInfo = String.Join(",",ri.getIngredients().ToArray());
+            getRecipeInfo = ri.getIngredients().ToString();
             getRecipesteps = ri.getSteps().ToString();
         }
         public static string recipeingredients;
@@ -98,97 +96,8 @@ namespace Main_Health_Partner
 
         private void button2_Click(object sender, EventArgs e)
         {
-            RESTClient rClient = new RESTClient();
-            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?diet=" + listBoxDiet.GetItemText(listBoxDiet.SelectedItem) + "&excludeIngredients=" + textBoxExIngredients.Text + "&intolerances=" + textBoxIntolarences.Text + "&number=10&offset=0&query=" + textBoxRecipe.Text + "&type=" + listBoxType.GetItemText(listBoxType.SelectedItem);
-
-            Recipe[] re = rClient.makeRecipeRequest();
-            dataGridViewRecipe.Rows.Clear();
-            dataGridViewRecipe.Refresh();
-            for (int i = 0; i < 10; i++)
-            {              
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(dataGridViewRecipe);
-                row.Cells[0].Value = re[i].getId();
-                row.Cells[1].Value = re[i].getName();
-                row.Cells[2].Value = re[i].getMinutes();
-                row.Cells[3].Value = re[i].getServings();
-
-                dataGridViewRecipe.Rows.Add(row);
-            }
-            int RowIndex = dataGridViewSessure.RowCount - 1;
-            DataGridViewRow R = dataGridViewSessure.Rows[RowIndex];
-        }
-
-        private void dataGridViewRecipe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int rowindex = dataGridViewRecipe.CurrentCell.RowIndex;
-            int columnindex = dataGridViewRecipe.CurrentCell.ColumnIndex;
-            RESTClient rClient = new RESTClient();
-            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + dataGridViewRecipe.Rows[rowindex].Cells[columnindex].Value.ToString() + "/information";
-
-            RecipeInfo ri = rClient.makeRecipeInformationRequest();
-            Info_Recipe ir = new Info_Recipe();
-            ir.ShowDialog();
-            getRecipeInfo = String.Join(",", ri.getIngredients().ToArray());
-            getRecipesteps = ri.getSteps().ToString();
 
         }
-
-        private void buttonSaveSessure_Click(object sender, EventArgs e)
-        {
-            string StrQuery;
-
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\Documents\GitHub\Health-Partner\MyDatabase.mdf;Integrated Security=True");
-
-            for (int i = 0; i < dataGridViewSessure.Rows.Count - 1; i++)
-            {
-                SqlCommand cmd = new SqlCommand(@"INSERT INTO dbo.program (Id , day , food) VALUES ('"+Int32.Parse(dataGridViewSessure.Rows[i].Cells[0].Value.ToString())+"',' "+ dataGridViewSessure.Rows[i].Cells[1].Value.ToString()+"','"+ dataGridViewSessure.Rows[i].Cells[2].Value.ToString()+"')",conn);            
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();        
-            }
-                        
-        }
-
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            textBoxName.Enabled = true;
-            textBoxAge.Enabled = true;
-            textBoxSurname.Enabled = true;
-            textBoxWeight.Enabled = true;
-            textBoxHeight.Enabled = true;
-            
-        }
-
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\Documents\GitHub\Health-Partner\MyDatabase.mdf;Integrated Security=True"))
-            {
-
-                SqlCommand CmdSql = new SqlCommand("UPDATE dbo.myusers SET name=@name, surname = @surname, age = @age, weight= @weight , height = @height WHERE username like '" + Login.recby + "%' and password like '%" + Login.recby2 + "%'", conn);
-
-                CmdSql.Parameters.AddWithValue("@name", textBoxName.Text.ToString());
-                CmdSql.Parameters.AddWithValue("@surname", textBoxSurname.Text.ToString());
-                CmdSql.Parameters.AddWithValue("@age", Convert.ToInt32(textBoxAge.Text));
-                CmdSql.Parameters.AddWithValue("@weight", Convert.ToInt32(textBoxWeight.Text));
-                CmdSql.Parameters.AddWithValue("@height", Convert.ToSingle(textBoxHeight.Text));
-                conn.Open();
-                try
-                {
-                    CmdSql.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                }
-            }
-            textBoxName.Enabled = false;
-            textBoxAge.Enabled = false;
-            textBoxSurname.Enabled = false;
-            textBoxWeight.Enabled = false;
-            textBoxHeight.Enabled = false;
-        }
-
 
         //Meal Plan attributes to search by
         String timeFrame = "week", targetCalories = "3000", diet;
@@ -219,10 +128,10 @@ namespace Main_Health_Partner
         }
         void filldata()
         {
-            using (SqlConnection c = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\Documents\GitHub\Health-Partner\MyDatabase.mdf;Integrated Security=True"))
+            using (SqlConnection c = new SqlConnection(Properties.Settings.Default.MyDatabaseConnectionString))
             {
                 c.Open();
-                using (SqlDataAdapter a = new SqlDataAdapter("select * from dbo.myusers where username like '%"+Login.recby+"%' and password like '%"+Login.recby2+"%'", c))
+                using (SqlDataAdapter a = new SqlDataAdapter("select * from dbo.myusers where username like '"+Login.recby.Trim()+"'", c))
                 {
                     DataTable t = new DataTable();
                     a.Fill(t);
@@ -232,15 +141,17 @@ namespace Main_Health_Partner
         }
         private void Form_Main_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'myDatabaseMyUsers.myusers' table. You can move, or remove it, as needed.
             filldata();
             this.myusersTableAdapter.Fill(this.myDatabaseMyUsers.myusers);
             string s = Login.recby;
             dataGridView1.Visible = false;
-            //string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\MyDatabase.mdf;Integrated Security=True";
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\Documents\GitHub\Health-Partner\MyDatabase.mdf;Integrated Security=True");
+            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MyDatabase.mdf;Integrated Security=True";
+            SqlConnection con = new SqlConnection(conString);
 
-            string selectSql = "select @name,@surname,@weight,@age,@height from dbo.myusers where @username='%"+s+"%'";
+            string selectSql = "select @name,@surname,@weight,@age,@height from dbo.myusers where @username='" + s+"'";
             SqlCommand com = new SqlCommand(selectSql, con);
+            // SqlCommand myCommand = new SqlCommand("select * from dbo.myusers where username='" + s + "'", con1);
 
             textBoxName.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             textBoxSurname.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();

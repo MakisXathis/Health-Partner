@@ -47,9 +47,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Logo.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -122,8 +119,6 @@
       <DependentUpon>Sign_In_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="WeekMeal.cs" />
-    <None Include="Resources\businessman.png" />
-    <None Include="Resources\user1.png" />
     <None Include="Resources\businessman-xxl1.png" />
     <None Include="Resources\images %281%29.jpg" />
     <EmbeddedResource Include="About.resx">
@@ -169,7 +164,6 @@
       <DependentUpon>MyDatabaseMyUsers.xsd</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="Logo.ico" />
     <Content Include="MyDatabaseMyUsers.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>MyDatabaseMyUsers.Designer.cs</LastGenOutput>
