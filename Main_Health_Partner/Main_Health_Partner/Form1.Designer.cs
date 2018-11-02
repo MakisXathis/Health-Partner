@@ -34,16 +34,7 @@
             this.tabPageProfile = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.myusersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.myDatabaseMyUsers = new Main_Health_Partner.MyDatabaseMyUsers();
             this.textBoxHeight = new System.Windows.Forms.TextBox();
             this.textBoxWeight = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
@@ -58,6 +49,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonAbout = new System.Windows.Forms.Button();
             this.tabPageSessure = new System.Windows.Forms.TabPage();
+            this.buttonLoad = new System.Windows.Forms.Button();
+            this.buttonSaveSessure = new System.Windows.Forms.Button();
             this.dataGridViewSessure = new System.Windows.Forms.DataGridView();
             this.IdSessure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Day = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,30 +93,40 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.dataGridViewRecipe = new System.Windows.Forms.DataGridView();
-            this.textBoxRecipe = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.myusersTableAdapter = new Main_Health_Partner.MyDatabaseMyUsersTableAdapters.myusersTableAdapter();
             this.Id_Recipe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Recipe_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Minutes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Servings = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonSaveSessure = new System.Windows.Forms.Button();
-            this.buttonLoad = new System.Windows.Forms.Button();
+            this.textBoxRecipe = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.testBaseDataSet1 = new Main_Health_Partner.TestBaseDataSet();
+            this.tableAdapterManager1 = new Main_Health_Partner.TestBaseDataSetTableAdapters.TableAdapterManager();
+            this.myusersTableAdapter1 = new Main_Health_Partner.TestBaseDataSetTableAdapters.myusersTableAdapter();
             this.foodBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.myusersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profile.SuspendLayout();
             this.tabPageProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabaseMyUsers)).BeginInit();
             this.tabPageSessure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessure)).BeginInit();
             this.tabPageSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).BeginInit();
             this.tabPageRecipe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecipe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testBaseDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // Profile
@@ -166,7 +169,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Main_Health_Partner.Properties.Resources.businessman_xxl1;
-            this.pictureBox1.Location = new System.Drawing.Point(440, 94);
+            this.pictureBox1.Location = new System.Drawing.Point(441, 49);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(261, 257);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -178,78 +181,23 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.usernameDataGridViewTextBoxColumn,
-            this.passwordDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.surnameDataGridViewTextBoxColumn,
-            this.ageDataGridViewTextBoxColumn,
-            this.weightDataGridViewTextBoxColumn,
-            this.heightDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.myusersBindingSource;
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.dataGridView1.DataSource = this.myusersBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(502, 127);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(139, 106);
             this.dataGridView1.TabIndex = 14;
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "password";
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // surnameDataGridViewTextBoxColumn
-            // 
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "surname";
-            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
-            // 
-            // ageDataGridViewTextBoxColumn
-            // 
-            this.ageDataGridViewTextBoxColumn.DataPropertyName = "age";
-            this.ageDataGridViewTextBoxColumn.HeaderText = "age";
-            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
-            // 
-            // weightDataGridViewTextBoxColumn
-            // 
-            this.weightDataGridViewTextBoxColumn.DataPropertyName = "weight";
-            this.weightDataGridViewTextBoxColumn.HeaderText = "weight";
-            this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
-            // 
-            // heightDataGridViewTextBoxColumn
-            // 
-            this.heightDataGridViewTextBoxColumn.DataPropertyName = "height";
-            this.heightDataGridViewTextBoxColumn.HeaderText = "height";
-            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
-            // 
             // myusersBindingSource
             // 
             this.myusersBindingSource.DataMember = "myusers";
-            this.myusersBindingSource.DataSource = this.myDatabaseMyUsers;
-            // 
-            // myDatabaseMyUsers
-            // 
-            this.myDatabaseMyUsers.DataSetName = "MyDatabaseMyUsers";
-            this.myDatabaseMyUsers.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBoxHeight
             // 
@@ -381,6 +329,26 @@
             this.tabPageSessure.Size = new System.Drawing.Size(793, 425);
             this.tabPageSessure.TabIndex = 1;
             this.tabPageSessure.Text = "Sessure";
+            // 
+            // buttonLoad
+            // 
+            this.buttonLoad.Location = new System.Drawing.Point(686, 33);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoad.TabIndex = 5;
+            this.buttonLoad.Text = "Load";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
+            // 
+            // buttonSaveSessure
+            // 
+            this.buttonSaveSessure.Location = new System.Drawing.Point(594, 33);
+            this.buttonSaveSessure.Name = "buttonSaveSessure";
+            this.buttonSaveSessure.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveSessure.TabIndex = 4;
+            this.buttonSaveSessure.Text = "Save";
+            this.buttonSaveSessure.UseVisualStyleBackColor = true;
+            this.buttonSaveSessure.Click += new System.EventHandler(this.buttonSaveSessure_Click);
             // 
             // dataGridViewSessure
             // 
@@ -802,6 +770,26 @@
             this.dataGridViewRecipe.TabIndex = 2;
             this.dataGridViewRecipe.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecipe_CellDoubleClick);
             // 
+            // Id_Recipe
+            // 
+            this.Id_Recipe.HeaderText = "Id";
+            this.Id_Recipe.Name = "Id_Recipe";
+            // 
+            // Recipe_Name
+            // 
+            this.Recipe_Name.HeaderText = "Name";
+            this.Recipe_Name.Name = "Recipe_Name";
+            // 
+            // Minutes
+            // 
+            this.Minutes.HeaderText = "Minutes";
+            this.Minutes.Name = "Minutes";
+            // 
+            // Servings
+            // 
+            this.Servings.HeaderText = "Servings";
+            this.Servings.Name = "Servings";
+            // 
             // textBoxRecipe
             // 
             this.textBoxRecipe.Location = new System.Drawing.Point(98, 80);
@@ -824,53 +812,80 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "Logo.png");
             // 
-            // myusersTableAdapter
+            // testBaseDataSet1
             // 
-            this.myusersTableAdapter.ClearBeforeFill = true;
+            this.testBaseDataSet1.DataSetName = "TestBaseDataSet";
+            this.testBaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // Id_Recipe
+            // tableAdapterManager1
             // 
-            this.Id_Recipe.HeaderText = "Id";
-            this.Id_Recipe.Name = "Id_Recipe";
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.Connection = null;
+            this.tableAdapterManager1.myusersTableAdapter = null;
+            this.tableAdapterManager1.programTableAdapter = null;
+            this.tableAdapterManager1.UpdateOrder = Main_Health_Partner.TestBaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // Recipe_Name
+            // myusersTableAdapter1
             // 
-            this.Recipe_Name.HeaderText = "Name";
-            this.Recipe_Name.Name = "Recipe_Name";
-            // 
-            // Minutes
-            // 
-            this.Minutes.HeaderText = "Minutes";
-            this.Minutes.Name = "Minutes";
-            // 
-            // Servings
-            // 
-            this.Servings.HeaderText = "Servings";
-            this.Servings.Name = "Servings";
-            // 
-            // buttonSaveSessure
-            // 
-            this.buttonSaveSessure.Location = new System.Drawing.Point(594, 33);
-            this.buttonSaveSessure.Name = "buttonSaveSessure";
-            this.buttonSaveSessure.Size = new System.Drawing.Size(75, 23);
-            this.buttonSaveSessure.TabIndex = 4;
-            this.buttonSaveSessure.Text = "Save";
-            this.buttonSaveSessure.UseVisualStyleBackColor = true;
-            this.buttonSaveSessure.Click += new System.EventHandler(this.buttonSaveSessure_Click);
-            // 
-            // buttonLoad
-            // 
-            this.buttonLoad.Location = new System.Drawing.Point(686, 33);
-            this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoad.TabIndex = 5;
-            this.buttonLoad.Text = "Load";
-            this.buttonLoad.UseVisualStyleBackColor = true;
-            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
+            this.myusersTableAdapter1.ClearBeforeFill = true;
             // 
             // foodBindingSource
             // 
             this.foodBindingSource.DataSource = typeof(Main_Health_Partner.Food);
+            // 
+            // myusersBindingSource1
+            // 
+            this.myusersBindingSource1.DataMember = "myusers";
+            this.myusersBindingSource1.DataSource = this.testBaseDataSet1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "username";
+            this.dataGridViewTextBoxColumn2.HeaderText = "username";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "password";
+            this.dataGridViewTextBoxColumn3.HeaderText = "password";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "name";
+            this.dataGridViewTextBoxColumn4.HeaderText = "name";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "surname";
+            this.dataGridViewTextBoxColumn5.HeaderText = "surname";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "age";
+            this.dataGridViewTextBoxColumn6.HeaderText = "age";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "weight";
+            this.dataGridViewTextBoxColumn7.HeaderText = "weight";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "height";
+            this.dataGridViewTextBoxColumn8.HeaderText = "height";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
             // Form_Main
             // 
@@ -890,7 +905,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDatabaseMyUsers)).EndInit();
             this.tabPageSessure.ResumeLayout(false);
             this.tabPageSessure.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessure)).EndInit();
@@ -900,7 +914,9 @@
             this.tabPageRecipe.ResumeLayout(false);
             this.tabPageRecipe.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecipe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testBaseDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -925,9 +941,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private MyDatabaseMyUsers myDatabaseMyUsers;
+       // private MyDatabaseMyUsers myDatabaseMyUsers;
         private System.Windows.Forms.BindingSource myusersBindingSource;
-        private MyDatabaseMyUsersTableAdapters.myusersTableAdapter myusersTableAdapter;
+       // private MyDatabaseMyUsersTableAdapters.myusersTableAdapter myusersTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
@@ -988,6 +1004,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Servings;
         private System.Windows.Forms.Button buttonSaveSessure;
         private System.Windows.Forms.Button buttonLoad;
+        private TestBaseDataSet testBaseDataSet1;
+        private TestBaseDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private TestBaseDataSetTableAdapters.myusersTableAdapter myusersTableAdapter1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.BindingSource myusersBindingSource1;
     }
 }
 

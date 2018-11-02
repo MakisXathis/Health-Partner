@@ -33,5 +33,16 @@ namespace Main_Health_Partner.Properties {
                 return ((string)(this["MyDatabaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TestBase.mdf;" +
+            "Integrated Security=True")]
+        public string TestBaseConnectionString {
+            get {
+                return ((string)(this["TestBaseConnectionString"]));
+            }
+        }
     }
 }
