@@ -301,7 +301,7 @@ namespace Main_Health_Partner
             using (SqlConnection c = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True"))
             {
                 c.Open();
-                using (SqlDataAdapter a = new SqlDataAdapter("select * from dbo.myusers where username like '"+Login.recby.Trim()+"' and password like '"+Login.recby2+"'", c))
+                using (SqlDataAdapter a = new SqlDataAdapter("select * from dbo.myusers where username like '"+Login.recby+"' and password like '"+Login.recby2+"'", c))
                 {
                     DataTable t = new DataTable();
                     a.Fill(t);
@@ -313,15 +313,16 @@ namespace Main_Health_Partner
         {
             // TODO: This line of code loads data into the 'myDatabaseMyUsers.myusers' table. You can move, or remove it, as needed.
             filldata();
-            this.myusersTableAdapter.Fill(this.myDatabaseMyUsers.myusers);
+            this.myusersTableAdapter1.Fill(this.testBaseDataSet1.myusers);
+            //myusersTableAdapter.Fill(this.testBaseDataSet1.myusers);
             string s = Login.recby;
             dataGridView1.Visible = false;
             string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
 
-            string selectSql = "select @name,@surname,@weight,@age,@height from dbo.myusers where @username='" + s+"'";
+            string selectSql = "select @name,@surname,@weight,@age,@height from dbo.myusers where @username like'" +s+"'";
             SqlCommand com = new SqlCommand(selectSql, con);
-            // SqlCommand myCommand = new SqlCommand("select * from dbo.myusers where username='" + s + "'", con1);
+            //SqlCommand myCommand = new SqlCommand("select * from dbo.myusers where username='" + s + "'", con);
 
             textBoxName.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             textBoxSurname.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();

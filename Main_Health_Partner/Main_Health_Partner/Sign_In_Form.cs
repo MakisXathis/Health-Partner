@@ -38,8 +38,8 @@ namespace Main_Health_Partner
                     CmdSql.Parameters.AddWithValue("@password", textBoxPasswd.Text);
                     CmdSql.Parameters.AddWithValue("@name", textBoxName.Text);
                     CmdSql.Parameters.AddWithValue("@surname", textBoxSurname.Text);
-                    CmdSql.Parameters.AddWithValue("@age", Convert.ToInt32(textBoxAge.Text));
-                    CmdSql.Parameters.AddWithValue("@weight", Convert.ToInt32(textBoxWeight.Text));
+                    CmdSql.Parameters.AddWithValue("@age", int.Parse(textBoxAge.Text));
+                    CmdSql.Parameters.AddWithValue("@weight", int.Parse(textBoxWeight.Text));
                     CmdSql.Parameters.AddWithValue("@height", Convert.ToDouble(textBoxHeight.Text));
                     CmdSql.ExecuteNonQuery();
                     conn.Close();

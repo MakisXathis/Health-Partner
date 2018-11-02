@@ -104,9 +104,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(101, 194);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.Size = new System.Drawing.Size(139, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Email : ";
+            this.label4.Text = "Email : it133978@it.teithe.gr";
             // 
             // label5
             // 
