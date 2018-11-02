@@ -52,10 +52,6 @@ namespace Main_Health_Partner
 
             Dictionary<String, String> dict = new Dictionary<String, String>();
 
-            //for (int i = 0; i <= 22; i++)
-            //{
-            //  dict.Add((String)jNutrients.calories, (int)jNutrients.calories.value);
-            //}
 
             dict.Add("calories", (String)jNutrients.nutrition.calories);
             dict.Add("fat", (String)jNutrients.nutrition.fat);
@@ -128,7 +124,7 @@ namespace Main_Health_Partner
             var jRecipe = JsonConvert.DeserializeObject<dynamic>(getResponse(this.endPoint));
 
             Recipe[] recipes = new Recipe[10];
-
+            
             for( int i = 0; i < 10; i++)
             {
                 recipes[i] = new Recipe((int)jRecipe.results[i].id, (String)jRecipe.results[i].title, (int)jRecipe.results[i].readyInMinutes, (int)jRecipe.results[i].servings);

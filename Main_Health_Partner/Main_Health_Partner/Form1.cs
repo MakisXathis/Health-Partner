@@ -16,71 +16,9 @@ namespace Main_Health_Partner
     {
         //Food attributes attributes to search by
         String maxCalories = "100", minCalories = "0", minProtein = "0", maxProtein = "100", minFat = "0", maxFat = "100", minCarbs = "0", maxCarbs = "500";
-        public static int Id_Sessure;
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            RESTClient rClient = new RESTClient();
-
-            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxSearch.Text + "&offset=0&number=10&maxCalories=" + textBoxMaxCalories.Text + "&minProtein=" + textBoxMinProtein.Text + "&maxProtein=" + textBoxMaxProtein.Text+ "&minFat=" + textBoxMinFat.Text + "&maxFat=" + textBoxMaxFat.Text + "&minCarbs=" + textBoxMinCarbs.Text + "&maxCarbs=" + textBoxMaxCarbs.Text + "&minCalories=" + textBoxMinCalories.Text;
-
-            f = rClient.makeFoodRequest();
-            dataGridViewFood.RowTemplate.Height = 150;
-            dataGridViewFood.Rows.Clear();
-            dataGridViewFood.Refresh();
-            for (int i = 0; i < f.Length; i++)
-            {
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(dataGridViewFood);
-                row.Cells[0].Value = f[i].getId();
-                row.Cells[1].Value = f[i].getName();
-                row.Cells[2].Value = f[i].getImg();
-                
-                dataGridViewFood.Rows.Add(row);
-            }
-            int RowIndex = dataGridViewFood.RowCount - 1;
-            DataGridViewRow R = dataGridViewFood.Rows[RowIndex];
-        }
-
-        private void tabPageRecipe_Click(object sender, EventArgs e)
-        {
-
-        }
+        public static int Id_Shedule;
         Dictionary<int,WeekMeal> meal;
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            
-            RESTClient rClient = new RESTClient();
-            rClient.endPoint = " https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate?timeFrame=" + timeFrame + "&targetCalories=" + targetCalories ;
-            meal = rClient.makeMealRequest();
-            dataGridViewSessure.Rows.Clear();
-            dataGridViewSessure.Refresh();
-            for (int i = 0; i <21; i++)
-            {
-                meal[i].ToString();
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(dataGridViewSessure);
-                row.Cells[0].Value = meal[i].getId();
-                row.Cells[1].Value = meal[i].getDay();
-                row.Cells[2].Value = meal[i].getName();
-                dataGridViewSessure.Rows.Add(row);
-            }
-            int RowIndex = dataGridViewSessure.RowCount - 1;
-            DataGridViewRow R = dataGridViewSessure.Rows[RowIndex];
-        }
-        
-        private void dataGridViewSessure_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            RESTClient rClient = new RESTClient();
-            int rowindex = dataGridViewSessure.CurrentCell.RowIndex;
-            int columnindex = dataGridViewSessure.CurrentCell.ColumnIndex;
-         
-            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + dataGridViewSessure.Rows[rowindex].Cells[columnindex].Value.ToString()+ "/information"; 
-            RecipeInfo ri = rClient.makeRecipeInformationRequest();
-            Info_Recipe ir = new Info_Recipe();
-            ir.ShowDialog();
-            getRecipeInfo = String.Join(",", ri.getIngredients().ToArray());
-            getRecipesteps = ri.getSteps().ToString();
-        }
+
         public static string recipeingredients;
         public static string recipesteps;
         public static string getRecipeInfo
@@ -89,6 +27,11 @@ namespace Main_Health_Partner
             get { return recipeingredients; }
             set { recipeingredients = value; }
         }
+
+        //Results from foodsearch
+        Food[] f;
+
+
         public static string getRecipesteps
         {
 
@@ -96,28 +39,126 @@ namespace Main_Health_Partner
             set { recipesteps = value; }
         }
 
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            RESTClient rClient = new RESTClient();
+
+            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxSearch.Text + "&offset=0&number=10&maxCalories=" + textBoxMaxCalories.Text + "&minProtein=" + textBoxMinProtein.Text + "&maxProtein=" + textBoxMaxProtein.Text+ "&minFat=" + textBoxMinFat.Text + "&maxFat=" + textBoxMaxFat.Text + "&minCarbs=" + textBoxMinCarbs.Text + "&maxCarbs=" + textBoxMaxCarbs.Text + "&minCalories=" + textBoxMinCalories.Text;
+            try{
+
+                f = rClient.makeFoodRequest();
+                dataGridViewFood.RowTemplate.Height = 150;
+                dataGridViewFood.Rows.Clear();
+                dataGridViewFood.Refresh();
+            
+                for (int i = 0; i < f.Length; i++)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dataGridViewFood);
+                    row.Cells[0].Value = f[i].getId();
+                    row.Cells[1].Value = f[i].getName();
+                    row.Cells[2].Value = f[i].getImg();
+                
+                    dataGridViewFood.Rows.Add(row);
+                }
+                int RowIndex = dataGridViewFood.RowCount - 1;
+                DataGridViewRow R = dataGridViewFood.Rows[RowIndex];
+
+            }catch{
+                return;
+            }
+        }
+
+
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            
+            RESTClient rClient = new RESTClient();
+            rClient.endPoint = " https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate?timeFrame=" + timeFrame + "&targetCalories=" + targetCalories ;
+            
+            try{
+                meal = rClient.makeMealRequest();
+                dataGridViewSessure.Rows.Clear();
+                dataGridViewSessure.Refresh();
+
+                for (int i = 0; i <21; i++)
+                {
+                    meal[i].ToString();
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dataGridViewSessure);
+                    row.Cells[0].Value = meal[i].getId();
+                    row.Cells[1].Value = meal[i].getDay();
+                    row.Cells[2].Value = meal[i].getName();
+                    dataGridViewSessure.Rows.Add(row);
+                }
+                int RowIndex = dataGridViewSessure.RowCount - 1;
+                DataGridViewRow R = dataGridViewSessure.Rows[RowIndex];
+            }catch{
+                return;
+            }
+        }
+        
+        private void dataGridViewSessure_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try{
+                RESTClient rClient = new RESTClient();
+                int rowindex = dataGridViewSessure.CurrentCell.RowIndex;
+                int columnindex = dataGridViewSessure.CurrentCell.ColumnIndex;
+         
+                rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + dataGridViewSessure.Rows[rowindex].Cells[columnindex].Value.ToString()+ "/information"; 
+                RecipeInfo ri = rClient.makeRecipeInformationRequest();
+                Info_Recipe ir = new Info_Recipe();
+                ir.ShowDialog();
+                getRecipeInfo = String.Join(",", ri.getIngredients().ToArray());
+                getRecipesteps = ri.getSteps().ToString();
+            }catch{
+                return;
+            }
+        }
+        
+
         private void button2_Click(object sender, EventArgs e)
         {
             RESTClient rClient = new RESTClient();
             rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?diet=" + listBoxDiet.GetItemText(listBoxDiet.SelectedItem) + "&excludeIngredients=" + textBoxExIngredients.Text + "&intolerances=" + textBoxIntolarences.Text + "&number=10&offset=0&query=" + textBoxRecipe.Text + "&type=" + listBoxType.GetItemText(listBoxDiet.SelectedItem);
+            try{
 
-            Recipe[] re = rClient.makeRecipeRequest();
-            dataGridViewRecipe.Rows.Clear();
-            dataGridViewRecipe.Refresh();
-            for (int i = 0; i < 10; i++)
-            {
+                Recipe[] re = rClient.makeRecipeRequest();
+
+                dataGridViewRecipe.Rows.Clear();
+                dataGridViewRecipe.Refresh();
+
+                for (int i = 0; i < 10; i++)
+                {
                 
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(dataGridViewRecipe);
-                row.Cells[0].Value = re[i].getId();
-                row.Cells[1].Value = re[i].getName();
-                row.Cells[2].Value = re[i].getMinutes();
-                row.Cells[3].Value = re[i].getServings();
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dataGridViewRecipe);
+                    row.Cells[0].Value = re[i].getId();
+                    row.Cells[1].Value = re[i].getName();
+                    row.Cells[2].Value = re[i].getMinutes();
+                    row.Cells[3].Value = re[i].getServings();
 
-                dataGridViewRecipe.Rows.Add(row);
+                    dataGridViewRecipe.Rows.Add(row);
+                }
+                int RowIndex = dataGridViewRecipe.RowCount - 1;
+                DataGridViewRow R = dataGridViewRecipe.Rows[RowIndex];
+            }catch{
+
+                dataGridViewRecipe.Rows.Clear();
+                dataGridViewRecipe.Refresh();
+                
+                if(re[i].getId==null){
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dataGridViewRecipe);
+                    row.Cells[0].Value = "No";
+                    row.Cells[1].Value = "matching";
+                    row.Cells[2].Value = "results";
+                    row.Cells[3].Value = "found";
+                }
+
             }
-            int RowIndex = dataGridViewRecipe.RowCount - 1;
-            DataGridViewRow R = dataGridViewRecipe.Rows[RowIndex];
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -146,16 +187,22 @@ namespace Main_Health_Partner
 
         private void dataGridViewRecipe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             RESTClient rClient = new RESTClient();
             int rowindex = dataGridViewRecipe.CurrentCell.RowIndex;
             int columnindex = dataGridViewRecipe.CurrentCell.ColumnIndex;
+            try{
 
-            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + dataGridViewRecipe.Rows[rowindex].Cells[columnindex].Value.ToString() + "/information";
-            RecipeInfo ri = rClient.makeRecipeInformationRequest();
-            Info_Recipe ir = new Info_Recipe();
-            ir.ShowDialog();
-            getRecipeInfo = String.Join(",", ri.getIngredients().ToArray());
-            getRecipesteps = ri.getSteps().ToString();
+                rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + dataGridViewRecipe.Rows[rowindex].Cells[columnindex].Value.ToString() + "/information";
+                RecipeInfo ri = rClient.makeRecipeInformationRequest();
+                Info_Recipe ir = new Info_Recipe();
+                ir.ShowDialog();
+                getRecipeInfo = String.Join(",", ri.getIngredients().ToArray());
+                getRecipesteps = ri.getSteps().ToString();
+
+            }catch{
+                return;
+            }
         }
 
         private void buttonSaveSessure_Click(object sender, EventArgs e)
@@ -201,9 +248,6 @@ namespace Main_Health_Partner
             }
         }
 
-        //Results from foodsearch
-        Food[] f;
-
 
 
         public Form_Main()
@@ -225,12 +269,9 @@ namespace Main_Health_Partner
             ab.ShowDialog();
            
         }
-        public static int getId_Sessure
-        {
 
-            get { return Id_Sessure; }
-            set { Id_Sessure = value; }
-        }
+
+        
 
         void returnid()
         {
@@ -295,15 +336,26 @@ namespace Main_Health_Partner
         private void button1_Click(object sender, EventArgs e)
         {
             RESTClient rClient = new RESTClient();
+            try{
+                rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxSearch.Text + "&offset=0&number=10&maxCalories=" + maxCalories + "&minProtein=" + minProtein + "&maxProtein=" + maxProtein + "&minFat=" + minFat + "&maxFat=" + maxFat + "&minCarbs=" + minCarbs + "&maxCarbs=" + maxCarbs + "&minCalories=" + minCalories;
 
-            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxSearch.Text + "&offset=0&number=10&maxCalories=" + maxCalories + "&minProtein=" + minProtein + "&maxProtein=" + maxProtein + "&minFat=" + minFat + "&maxFat=" + maxFat + "&minCarbs=" + minCarbs + "&maxCarbs=" + maxCarbs + "&minCalories=" + minCalories;
+                f = rClient.makeFoodRequest();
 
-            f = rClient.makeFoodRequest();
-
-            for(int i = 0 ; i < 10 ; i++) {
-                Console.WriteLine(f[i].toString());
+                for(int i = 0 ; i < 10 ; i++) {
+                    Console.WriteLine(f[i].toString());
+                }
+            }catch{
+                return;
             }
-            
         }
+
+        public static int getId_Sessure
+        {
+
+            get { return Id_Sessure; }
+            set { Id_Sessure = value; }
+        }
+
+
     }
 }
