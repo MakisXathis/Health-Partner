@@ -104,6 +104,12 @@
             this.label16 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.myusersTableAdapter = new Main_Health_Partner.MyDatabaseMyUsersTableAdapters.myusersTableAdapter();
+            this.Id_Recipe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recipe_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Minutes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Servings = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonSaveSessure = new System.Windows.Forms.Button();
+            this.buttonLoad = new System.Windows.Forms.Button();
             this.foodBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Profile.SuspendLayout();
             this.tabPageProfile.SuspendLayout();
@@ -160,7 +166,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Main_Health_Partner.Properties.Resources.businessman_xxl1;
-            this.pictureBox1.Location = new System.Drawing.Point(429, 52);
+            this.pictureBox1.Location = new System.Drawing.Point(440, 94);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(261, 257);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -293,6 +299,7 @@
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonEdit
             // 
@@ -302,6 +309,7 @@
             this.buttonEdit.TabIndex = 7;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // label5
             // 
@@ -361,6 +369,8 @@
             // tabPageSessure
             // 
             this.tabPageSessure.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tabPageSessure.Controls.Add(this.buttonLoad);
+            this.tabPageSessure.Controls.Add(this.buttonSaveSessure);
             this.tabPageSessure.Controls.Add(this.dataGridViewSessure);
             this.tabPageSessure.Controls.Add(this.label6);
             this.tabPageSessure.Controls.Add(this.textBox1);
@@ -374,14 +384,15 @@
             // 
             // dataGridViewSessure
             // 
+            this.dataGridViewSessure.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dataGridViewSessure.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSessure.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdSessure,
             this.Day,
             this.FoodSessure});
-            this.dataGridViewSessure.Location = new System.Drawing.Point(36, 85);
+            this.dataGridViewSessure.Location = new System.Drawing.Point(-4, 85);
             this.dataGridViewSessure.Name = "dataGridViewSessure";
-            this.dataGridViewSessure.Size = new System.Drawing.Size(734, 312);
+            this.dataGridViewSessure.Size = new System.Drawing.Size(797, 344);
             this.dataGridViewSessure.TabIndex = 3;
             this.dataGridViewSessure.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSessure_CellDoubleClick);
             // 
@@ -778,11 +789,18 @@
             // 
             // dataGridViewRecipe
             // 
+            this.dataGridViewRecipe.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dataGridViewRecipe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRecipe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id_Recipe,
+            this.Recipe_Name,
+            this.Minutes,
+            this.Servings});
             this.dataGridViewRecipe.Location = new System.Drawing.Point(0, 125);
             this.dataGridViewRecipe.Name = "dataGridViewRecipe";
             this.dataGridViewRecipe.Size = new System.Drawing.Size(793, 304);
             this.dataGridViewRecipe.TabIndex = 2;
+            this.dataGridViewRecipe.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecipe_CellDoubleClick);
             // 
             // textBoxRecipe
             // 
@@ -809,6 +827,46 @@
             // myusersTableAdapter
             // 
             this.myusersTableAdapter.ClearBeforeFill = true;
+            // 
+            // Id_Recipe
+            // 
+            this.Id_Recipe.HeaderText = "Id";
+            this.Id_Recipe.Name = "Id_Recipe";
+            // 
+            // Recipe_Name
+            // 
+            this.Recipe_Name.HeaderText = "Name";
+            this.Recipe_Name.Name = "Recipe_Name";
+            // 
+            // Minutes
+            // 
+            this.Minutes.HeaderText = "Minutes";
+            this.Minutes.Name = "Minutes";
+            // 
+            // Servings
+            // 
+            this.Servings.HeaderText = "Servings";
+            this.Servings.Name = "Servings";
+            // 
+            // buttonSaveSessure
+            // 
+            this.buttonSaveSessure.Location = new System.Drawing.Point(594, 33);
+            this.buttonSaveSessure.Name = "buttonSaveSessure";
+            this.buttonSaveSessure.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveSessure.TabIndex = 4;
+            this.buttonSaveSessure.Text = "Save";
+            this.buttonSaveSessure.UseVisualStyleBackColor = true;
+            this.buttonSaveSessure.Click += new System.EventHandler(this.buttonSaveSessure_Click);
+            // 
+            // buttonLoad
+            // 
+            this.buttonLoad.Location = new System.Drawing.Point(686, 33);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoad.TabIndex = 5;
+            this.buttonLoad.Text = "Load";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
             // foodBindingSource
             // 
@@ -924,6 +982,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdSessure;
         private System.Windows.Forms.DataGridViewTextBoxColumn Day;
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodSessure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Recipe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Recipe_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Minutes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Servings;
+        private System.Windows.Forms.Button buttonSaveSessure;
+        private System.Windows.Forms.Button buttonLoad;
     }
 }
 

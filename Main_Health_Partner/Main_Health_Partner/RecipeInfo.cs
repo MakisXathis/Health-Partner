@@ -37,7 +37,7 @@ namespace Main_Health_Partner
             Steps = s;
         }
 
-        public void ToString()
+        public string ToString()
         {
             String s = "Ingredients : ";
             for (int i = 0; i < Names.Count; i++)
@@ -45,9 +45,8 @@ namespace Main_Health_Partner
                 String ingredient = Names[i] + ", ";
                 s = s + ingredient;
             }
-
-            Console.WriteLine(s);
-            Console.WriteLine(Steps);
+            return s;
+  
         }
 
     }

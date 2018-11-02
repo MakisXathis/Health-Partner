@@ -119,6 +119,13 @@
       <DependentUpon>Sign_In_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="WeekMeal.cs" />
+    <Content Include="TestBase.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestBase_log.ldf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>TestBase.mdf</DependentUpon>
+    </Content>
     <None Include="Resources\businessman-xxl1.png" />
     <None Include="Resources\images %281%29.jpg" />
     <EmbeddedResource Include="About.resx">

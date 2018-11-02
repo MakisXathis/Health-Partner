@@ -16,10 +16,11 @@ namespace Main_Health_Partner
     {
         string connectionString;
         public static string username;
+        public static string password;
         public Login()
         {
             InitializeComponent();
-
+            
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -34,13 +35,19 @@ namespace Main_Health_Partner
             get { return username; }
             set { username = value; }
         }
+        public static string recby2
+        {
+
+            get { return password; }
+            set { password = value; }
+        }
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
             
             string user = textBoxUsername.Text;
             string passwd = textBoxPassword.Text;
             
-                using (SqlConnection sql = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\MyDatabase.mdf;Integrated Security=True"))
+                using (SqlConnection sql = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True"))
                 {
                     try
                     {
@@ -53,6 +60,7 @@ namespace Main_Health_Partner
                         if (result == 1)
                         {
                             recby = user;
+                            recby2 = passwd;
                             sql.Close();
 
                             this.Hide();

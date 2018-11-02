@@ -28,7 +28,7 @@ namespace Main_Health_Partner
         {
             if (!((textBoxUsername.Text.CompareTo("") | (textBoxPasswd.Text.CompareTo("")) | textBoxName.Text.CompareTo("") | textBoxSurname.Text.CompareTo("") | textBoxAge.Text.CompareTo("") | textBoxWeight.Text.CompareTo("") | textBoxHeight.Text.CompareTo("")) ==0))
             {
-                using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\MyDatabase.mdf;Integrated Security=True"))
+                using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True"))
                 {
                     conn.Open();
                     SqlCommand CmdSql = new SqlCommand("INSERT INTO dbo.myusers (username, password, name, surname, age, weight, height) VALUES (@username, @password, @name, @surname, @age, @weight, @height)", conn);
@@ -40,7 +40,7 @@ namespace Main_Health_Partner
                     CmdSql.Parameters.AddWithValue("@surname", textBoxSurname.Text);
                     CmdSql.Parameters.AddWithValue("@age", Convert.ToInt32(textBoxAge.Text));
                     CmdSql.Parameters.AddWithValue("@weight", Convert.ToInt32(textBoxWeight.Text));
-                    CmdSql.Parameters.AddWithValue("@height", Convert.ToInt32(textBoxHeight.Text));
+                    CmdSql.Parameters.AddWithValue("@height", Convert.ToDouble(textBoxHeight.Text));
                     CmdSql.ExecuteNonQuery();
                     conn.Close();
                 }
