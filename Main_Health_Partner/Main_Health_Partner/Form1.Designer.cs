@@ -659,7 +659,7 @@
             this.tabPageRecipe.Size = new System.Drawing.Size(793, 425);
             this.tabPageRecipe.TabIndex = 3;
             this.tabPageRecipe.Text = "Recipe";
-            this.tabPageRecipe.Click += new System.EventHandler(this.tabPageRecipe_Click);
+            //this.tabPageRecipe.Click += new System.EventHandler(this.tabPageRecipe_Click);
             // 
             // button2
             // 

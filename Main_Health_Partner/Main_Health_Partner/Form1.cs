@@ -18,7 +18,7 @@ namespace Main_Health_Partner
         String maxCalories = "100", minCalories = "0", minProtein = "0", maxProtein = "100", minFat = "0", maxFat = "100", minCarbs = "0", maxCarbs = "500";
         public static int Id_Shedule;
         Dictionary<int,WeekMeal> meal;
-
+        public static int Id_Sessure;
         public static string recipeingredients;
         public static string recipesteps;
         public static string getRecipeInfo
@@ -149,14 +149,7 @@ namespace Main_Health_Partner
                 dataGridViewRecipe.Rows.Clear();
                 dataGridViewRecipe.Refresh();
                 
-                if(re[i].getId==null){
-                    DataGridViewRow row = new DataGridViewRow();
-                    row.CreateCells(dataGridViewRecipe);
-                    row.Cells[0].Value = "No";
-                    row.Cells[1].Value = "matching";
-                    row.Cells[2].Value = "results";
-                    row.Cells[3].Value = "found";
-                }
+                
 
             }
         }
@@ -172,7 +165,7 @@ namespace Main_Health_Partner
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            SqlConnection c = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True");
+            SqlConnection c = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True");
             
                 SqlCommand cmd = new SqlCommand(@"UPDATE dbo.myusers SET name='" + textBoxName.Text + "', surname='" + textBoxSurname.Text + "', age= "+Int32.Parse(textBoxAge.Text)+", weight= "+Int32.Parse(textBoxWeight.Text)+", height = "+double.Parse(textBoxHeight.Text)+" WHERE username like '"+ Login.recby +"' and password like '"+Login.recby2+"'",c);
                 c.Open();
@@ -207,7 +200,7 @@ namespace Main_Health_Partner
 
         private void buttonSaveSessure_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True");
 
             for (int i = 0; i < dataGridViewSessure.Rows.Count - 1; i++)
             {
@@ -228,7 +221,7 @@ namespace Main_Health_Partner
 
         private void buttonLoad_Click(object sender, EventArgs e)
         {
-            string constring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True";
+            string constring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True";
             dataGridViewSessure.Rows.Clear();
             dataGridViewSessure.Columns.Clear();
             using (SqlConnection con = new SqlConnection(constring))
@@ -275,10 +268,10 @@ namespace Main_Health_Partner
 
         void returnid()
         {
-            using (SqlConnection c = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True"))
+            using (SqlConnection c = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True"))
             {
                
-                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True");
+                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True");
                 SqlCommand comm = new SqlCommand("select Id from dbo.myusers where username like '"+Login.recby.Trim()+"' and password like '"+Login.recby2+"'", conn);
                 conn.Open();
                 SqlDataReader reader = comm.ExecuteReader();
@@ -298,7 +291,7 @@ namespace Main_Health_Partner
         }
         void filldata()
         {
-            using (SqlConnection c = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True"))
+            using (SqlConnection c = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True"))
             {
                 c.Open();
                 using (SqlDataAdapter a = new SqlDataAdapter("select * from dbo.myusers where username like '"+Login.recby+"' and password like '"+Login.recby2+"'", c))
@@ -317,7 +310,7 @@ namespace Main_Health_Partner
             //myusersTableAdapter.Fill(this.testBaseDataSet1.myusers);
             string s = Login.recby;
             dataGridView1.Visible = false;
-            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True";
+            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
 
             string selectSql = "select @name,@surname,@weight,@age,@height from dbo.myusers where @username like'" +s+"'";

@@ -47,7 +47,7 @@ namespace Main_Health_Partner
             string user = textBoxUsername.Text;
             string passwd = textBoxPassword.Text;
             
-                using (SqlConnection sql = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kostas\source\repos\Health-Partner\Main_Health_Partner\Main_Health_Partner\TestBase.mdf;Integrated Security=True"))
+                using (SqlConnection sql = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True"))
                 {
                     try
                     {

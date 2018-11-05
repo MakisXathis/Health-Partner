@@ -68,7 +68,9 @@
             this.Controls.Add(this.textBoxIngredients);
             this.Controls.Add(this.textBoxSteps);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Info_Recipe";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Info Recipe";
             this.Load += new System.EventHandler(this.Info_Recipe_Load);
             this.ResumeLayout(false);
