@@ -34,7 +34,16 @@
             this.tabPageProfile = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.myusersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.myusersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.testBaseDataSet1 = new Main_Health_Partner.TestBaseDataSet();
             this.textBoxHeight = new System.Windows.Forms.TextBox();
             this.textBoxWeight = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
@@ -48,16 +57,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonAbout = new System.Windows.Forms.Button();
-            this.tabPageSessure = new System.Windows.Forms.TabPage();
-            this.buttonLoad = new System.Windows.Forms.Button();
-            this.buttonSaveSessure = new System.Windows.Forms.Button();
-            this.dataGridViewSessure = new System.Windows.Forms.DataGridView();
+            this.tabPageSchedule = new System.Windows.Forms.TabPage();
+            this.buttonLoadSchedule = new System.Windows.Forms.Button();
+            this.buttonSaveSchedule = new System.Windows.Forms.Button();
+            this.dataGridViewSchedule = new System.Windows.Forms.DataGridView();
             this.IdSessure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Day = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FoodSessure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonSearchSchedule = new System.Windows.Forms.Button();
             this.tabPageSearch = new System.Windows.Forms.TabPage();
             this.textBoxMaxCarbs = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -79,11 +88,11 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Food_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Image = new System.Windows.Forms.DataGridViewImageColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonFoodButton = new System.Windows.Forms.Button();
+            this.textBoxFood = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPageRecipe = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonSearchRecipe = new System.Windows.Forms.Button();
             this.listBoxDiet = new System.Windows.Forms.ListBox();
             this.label20 = new System.Windows.Forms.Label();
             this.listBoxType = new System.Windows.Forms.ListBox();
@@ -99,40 +108,31 @@
             this.Servings = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxRecipe = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.myusersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.testBaseDataSet1 = new Main_Health_Partner.TestBaseDataSet();
             this.tableAdapterManager1 = new Main_Health_Partner.TestBaseDataSetTableAdapters.TableAdapterManager();
             this.myusersTableAdapter1 = new Main_Health_Partner.TestBaseDataSetTableAdapters.myusersTableAdapter();
             this.foodBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.myusersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profile.SuspendLayout();
             this.tabPageProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource)).BeginInit();
-            this.tabPageSessure.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessure)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testBaseDataSet1)).BeginInit();
+            this.tabPageSchedule.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSchedule)).BeginInit();
             this.tabPageSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).BeginInit();
             this.tabPageRecipe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecipe)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testBaseDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // Profile
             // 
             this.Profile.Controls.Add(this.tabPageProfile);
-            this.Profile.Controls.Add(this.tabPageSessure);
+            this.Profile.Controls.Add(this.tabPageSchedule);
             this.Profile.Controls.Add(this.tabPageSearch);
             this.Profile.Controls.Add(this.tabPageRecipe);
             this.Profile.Location = new System.Drawing.Point(0, 2);
@@ -195,9 +195,64 @@
             this.dataGridView1.Size = new System.Drawing.Size(139, 106);
             this.dataGridView1.TabIndex = 14;
             // 
-            // myusersBindingSource
+            // dataGridViewTextBoxColumn1
             // 
-            this.myusersBindingSource.DataMember = "myusers";
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "username";
+            this.dataGridViewTextBoxColumn2.HeaderText = "username";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "password";
+            this.dataGridViewTextBoxColumn3.HeaderText = "password";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "name";
+            this.dataGridViewTextBoxColumn4.HeaderText = "name";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "surname";
+            this.dataGridViewTextBoxColumn5.HeaderText = "surname";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "age";
+            this.dataGridViewTextBoxColumn6.HeaderText = "age";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "weight";
+            this.dataGridViewTextBoxColumn7.HeaderText = "weight";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "height";
+            this.dataGridViewTextBoxColumn8.HeaderText = "height";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // myusersBindingSource1
+            // 
+            this.myusersBindingSource1.DataMember = "myusers";
+            this.myusersBindingSource1.DataSource = this.testBaseDataSet1;
+            // 
+            // testBaseDataSet1
+            // 
+            this.testBaseDataSet1.DataSetName = "TestBaseDataSet";
+            this.testBaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBoxHeight
             // 
@@ -314,55 +369,55 @@
             this.buttonAbout.UseVisualStyleBackColor = true;
             this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
             // 
-            // tabPageSessure
+            // tabPageSchedule
             // 
-            this.tabPageSessure.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.tabPageSessure.Controls.Add(this.buttonLoad);
-            this.tabPageSessure.Controls.Add(this.buttonSaveSessure);
-            this.tabPageSessure.Controls.Add(this.dataGridViewSessure);
-            this.tabPageSessure.Controls.Add(this.label6);
-            this.tabPageSessure.Controls.Add(this.textBox1);
-            this.tabPageSessure.Controls.Add(this.buttonSearch);
-            this.tabPageSessure.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSessure.Name = "tabPageSessure";
-            this.tabPageSessure.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSessure.Size = new System.Drawing.Size(793, 425);
-            this.tabPageSessure.TabIndex = 1;
-            this.tabPageSessure.Text = "Sessure";
+            this.tabPageSchedule.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tabPageSchedule.Controls.Add(this.buttonLoadSchedule);
+            this.tabPageSchedule.Controls.Add(this.buttonSaveSchedule);
+            this.tabPageSchedule.Controls.Add(this.dataGridViewSchedule);
+            this.tabPageSchedule.Controls.Add(this.label6);
+            this.tabPageSchedule.Controls.Add(this.textBox1);
+            this.tabPageSchedule.Controls.Add(this.buttonSearchSchedule);
+            this.tabPageSchedule.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSchedule.Name = "tabPageSchedule";
+            this.tabPageSchedule.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSchedule.Size = new System.Drawing.Size(793, 425);
+            this.tabPageSchedule.TabIndex = 1;
+            this.tabPageSchedule.Text = "Schedule";
             // 
-            // buttonLoad
+            // buttonLoadSchedule
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(686, 33);
-            this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoad.TabIndex = 5;
-            this.buttonLoad.Text = "Load";
-            this.buttonLoad.UseVisualStyleBackColor = true;
-            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
+            this.buttonLoadSchedule.Location = new System.Drawing.Point(686, 33);
+            this.buttonLoadSchedule.Name = "buttonLoadSchedule";
+            this.buttonLoadSchedule.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoadSchedule.TabIndex = 5;
+            this.buttonLoadSchedule.Text = "Load";
+            this.buttonLoadSchedule.UseVisualStyleBackColor = true;
+            this.buttonLoadSchedule.Click += new System.EventHandler(this.buttonLoadSchedule_Click);
             // 
-            // buttonSaveSessure
+            // buttonSaveSchedule
             // 
-            this.buttonSaveSessure.Location = new System.Drawing.Point(594, 33);
-            this.buttonSaveSessure.Name = "buttonSaveSessure";
-            this.buttonSaveSessure.Size = new System.Drawing.Size(75, 23);
-            this.buttonSaveSessure.TabIndex = 4;
-            this.buttonSaveSessure.Text = "Save";
-            this.buttonSaveSessure.UseVisualStyleBackColor = true;
-            this.buttonSaveSessure.Click += new System.EventHandler(this.buttonSaveSessure_Click);
+            this.buttonSaveSchedule.Location = new System.Drawing.Point(594, 33);
+            this.buttonSaveSchedule.Name = "buttonSaveSchedule";
+            this.buttonSaveSchedule.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveSchedule.TabIndex = 4;
+            this.buttonSaveSchedule.Text = "Save";
+            this.buttonSaveSchedule.UseVisualStyleBackColor = true;
+            this.buttonSaveSchedule.Click += new System.EventHandler(this.buttonSaveSchedule_Click);
             // 
-            // dataGridViewSessure
+            // dataGridViewSchedule
             // 
-            this.dataGridViewSessure.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            this.dataGridViewSessure.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSessure.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewSchedule.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.dataGridViewSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdSessure,
             this.Day,
             this.FoodSessure});
-            this.dataGridViewSessure.Location = new System.Drawing.Point(-4, 85);
-            this.dataGridViewSessure.Name = "dataGridViewSessure";
-            this.dataGridViewSessure.Size = new System.Drawing.Size(797, 344);
-            this.dataGridViewSessure.TabIndex = 3;
-            this.dataGridViewSessure.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSessure_CellDoubleClick);
+            this.dataGridViewSchedule.Location = new System.Drawing.Point(-4, 85);
+            this.dataGridViewSchedule.Name = "dataGridViewSchedule";
+            this.dataGridViewSchedule.Size = new System.Drawing.Size(797, 344);
+            this.dataGridViewSchedule.TabIndex = 3;
+            this.dataGridViewSchedule.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSchedule_CellDoubleClick);
             // 
             // IdSessure
             // 
@@ -397,15 +452,15 @@
             this.textBox1.Size = new System.Drawing.Size(219, 20);
             this.textBox1.TabIndex = 1;
             // 
-            // buttonSearch
+            // buttonSearchSchedule
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(496, 33);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearch.TabIndex = 0;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            this.buttonSearchSchedule.Location = new System.Drawing.Point(496, 33);
+            this.buttonSearchSchedule.Name = "buttonSearchSchedule";
+            this.buttonSearchSchedule.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearchSchedule.TabIndex = 0;
+            this.buttonSearchSchedule.Text = "Search";
+            this.buttonSearchSchedule.UseVisualStyleBackColor = true;
+            this.buttonSearchSchedule.Click += new System.EventHandler(this.buttonSearchSchedule_Click);
             // 
             // tabPageSearch
             // 
@@ -427,8 +482,8 @@
             this.tabPageSearch.Controls.Add(this.textBoxMaxCalories);
             this.tabPageSearch.Controls.Add(this.label8);
             this.tabPageSearch.Controls.Add(this.dataGridViewFood);
-            this.tabPageSearch.Controls.Add(this.button1);
-            this.tabPageSearch.Controls.Add(this.textBoxSearch);
+            this.tabPageSearch.Controls.Add(this.buttonFoodButton);
+            this.tabPageSearch.Controls.Add(this.textBoxFood);
             this.tabPageSearch.Controls.Add(this.label7);
             this.tabPageSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tabPageSearch.Location = new System.Drawing.Point(4, 22);
@@ -613,22 +668,22 @@
             this.Image.Name = "Image";
             this.Image.Width = 350;
             // 
-            // button1
+            // buttonFoodButton
             // 
-            this.button1.Location = new System.Drawing.Point(683, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 65);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Press";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.buttonFoodButton.Location = new System.Drawing.Point(683, 18);
+            this.buttonFoodButton.Name = "buttonFoodButton";
+            this.buttonFoodButton.Size = new System.Drawing.Size(110, 65);
+            this.buttonFoodButton.TabIndex = 2;
+            this.buttonFoodButton.Text = "Press";
+            this.buttonFoodButton.UseVisualStyleBackColor = true;
+            this.buttonFoodButton.Click += new System.EventHandler(this.buttonSearchFood);
             // 
-            // textBoxSearch
+            // textBoxFood
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(86, 6);
-            this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(260, 20);
-            this.textBoxSearch.TabIndex = 1;
+            this.textBoxFood.Location = new System.Drawing.Point(86, 6);
+            this.textBoxFood.Name = "textBoxFood";
+            this.textBoxFood.Size = new System.Drawing.Size(260, 20);
+            this.textBoxFood.TabIndex = 1;
             // 
             // label7
             // 
@@ -642,7 +697,7 @@
             // tabPageRecipe
             // 
             this.tabPageRecipe.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.tabPageRecipe.Controls.Add(this.button2);
+            this.tabPageRecipe.Controls.Add(this.buttonSearchRecipe);
             this.tabPageRecipe.Controls.Add(this.listBoxDiet);
             this.tabPageRecipe.Controls.Add(this.label20);
             this.tabPageRecipe.Controls.Add(this.listBoxType);
@@ -659,17 +714,16 @@
             this.tabPageRecipe.Size = new System.Drawing.Size(793, 425);
             this.tabPageRecipe.TabIndex = 3;
             this.tabPageRecipe.Text = "Recipe";
-            //this.tabPageRecipe.Click += new System.EventHandler(this.tabPageRecipe_Click);
             // 
-            // button2
+            // buttonSearchRecipe
             // 
-            this.button2.Location = new System.Drawing.Point(657, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(127, 112);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Search";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonSearchRecipe.Location = new System.Drawing.Point(657, 7);
+            this.buttonSearchRecipe.Name = "buttonSearchRecipe";
+            this.buttonSearchRecipe.Size = new System.Drawing.Size(127, 112);
+            this.buttonSearchRecipe.TabIndex = 12;
+            this.buttonSearchRecipe.Text = "Search";
+            this.buttonSearchRecipe.UseVisualStyleBackColor = true;
+            this.buttonSearchRecipe.Click += new System.EventHandler(this.buttonRecipeSearch);
             // 
             // listBoxDiet
             // 
@@ -806,16 +860,15 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "Recipe Search :";
             // 
+            // myusersBindingSource
+            // 
+            this.myusersBindingSource.DataMember = "myusers";
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "Logo.png");
-            // 
-            // testBaseDataSet1
-            // 
-            this.testBaseDataSet1.DataSetName = "TestBaseDataSet";
-            this.testBaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableAdapterManager1
             // 
@@ -832,60 +885,6 @@
             // foodBindingSource
             // 
             this.foodBindingSource.DataSource = typeof(Main_Health_Partner.Food);
-            // 
-            // myusersBindingSource1
-            // 
-            this.myusersBindingSource1.DataMember = "myusers";
-            this.myusersBindingSource1.DataSource = this.testBaseDataSet1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "username";
-            this.dataGridViewTextBoxColumn2.HeaderText = "username";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "password";
-            this.dataGridViewTextBoxColumn3.HeaderText = "password";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "name";
-            this.dataGridViewTextBoxColumn4.HeaderText = "name";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "surname";
-            this.dataGridViewTextBoxColumn5.HeaderText = "surname";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "age";
-            this.dataGridViewTextBoxColumn6.HeaderText = "age";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "weight";
-            this.dataGridViewTextBoxColumn7.HeaderText = "weight";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "height";
-            this.dataGridViewTextBoxColumn8.HeaderText = "height";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
             // Form_Main
             // 
@@ -904,19 +903,19 @@
             this.tabPageProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource)).EndInit();
-            this.tabPageSessure.ResumeLayout(false);
-            this.tabPageSessure.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessure)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testBaseDataSet1)).EndInit();
+            this.tabPageSchedule.ResumeLayout(false);
+            this.tabPageSchedule.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSchedule)).EndInit();
             this.tabPageSearch.ResumeLayout(false);
             this.tabPageSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).EndInit();
             this.tabPageRecipe.ResumeLayout(false);
             this.tabPageRecipe.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecipe)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testBaseDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myusersBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -925,7 +924,7 @@
 
         private System.Windows.Forms.TabControl Profile;
         private System.Windows.Forms.TabPage tabPageProfile;
-        private System.Windows.Forms.TabPage tabPageSessure;
+        private System.Windows.Forms.TabPage tabPageSchedule;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button buttonAbout;
         private System.Windows.Forms.TextBox textBoxHeight;
@@ -954,11 +953,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn heightDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonSearchSchedule;
         private System.Windows.Forms.TabPage tabPageSearch;
-        private System.Windows.Forms.DataGridView dataGridViewSessure;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.DataGridView dataGridViewSchedule;
+        private System.Windows.Forms.Button buttonFoodButton;
+        private System.Windows.Forms.TextBox textBoxFood;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridViewFood;
         private System.Windows.Forms.BindingSource foodBindingSource;
@@ -994,7 +993,7 @@
         private System.Windows.Forms.DataGridView dataGridViewRecipe;
         private System.Windows.Forms.TextBox textBoxRecipe;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonSearchRecipe;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdSessure;
         private System.Windows.Forms.DataGridViewTextBoxColumn Day;
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodSessure;
@@ -1002,8 +1001,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Recipe_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Minutes;
         private System.Windows.Forms.DataGridViewTextBoxColumn Servings;
-        private System.Windows.Forms.Button buttonSaveSessure;
-        private System.Windows.Forms.Button buttonLoad;
+        private System.Windows.Forms.Button buttonSaveSchedule;
+        private System.Windows.Forms.Button buttonLoadSchedule;
         private TestBaseDataSet testBaseDataSet1;
         private TestBaseDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
         private TestBaseDataSetTableAdapters.myusersTableAdapter myusersTableAdapter1;

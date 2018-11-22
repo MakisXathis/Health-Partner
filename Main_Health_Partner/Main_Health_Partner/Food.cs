@@ -62,9 +62,7 @@ namespace Main_Health_Partner
         public String toString()
         {
             String s = "Food id : " + id +
-                "\r\n Food name : " + name + "\r\n";
-
-            Console.WriteLine(s);
+                "\r\n Food name : " + name + "\r\n"; 
 
             return s;
 

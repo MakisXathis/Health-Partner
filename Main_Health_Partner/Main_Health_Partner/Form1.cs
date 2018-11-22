@@ -18,18 +18,22 @@ namespace Main_Health_Partner
         String maxCalories = "100", minCalories = "0", minProtein = "0", maxProtein = "100", minFat = "0", maxFat = "100", minCarbs = "0", maxCarbs = "500";
         public static int Id_Shedule;
         Dictionary<int,WeekMeal> meal;
-        public static int Id_Sessure;
+        public static int Id_Schedule;
         public static string recipeingredients;
         public static string recipesteps;
         public static string getRecipeInfo
+
         {
 
             get { return recipeingredients; }
             set { recipeingredients = value; }
         }
 
-        //Results from foodsearch
+        //Results from food search
         Food[] f;
+
+        //Meal Plan attributes to search by
+        String timeFrame = "week", targetCalories = "3000", diet;
 
 
         public static string getRecipesteps
@@ -39,12 +43,12 @@ namespace Main_Health_Partner
             set { recipesteps = value; }
         }
 
-
-        private void button1_Click_1(object sender, EventArgs e)
+        //The search Button. Calls makeFoodRequest from rClient
+        private void buttonSearchFood(object sender, EventArgs e)
         {
             RESTClient rClient = new RESTClient();
 
-            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxSearch.Text + "&offset=0&number=10&maxCalories=" + textBoxMaxCalories.Text + "&minProtein=" + textBoxMinProtein.Text + "&maxProtein=" + textBoxMaxProtein.Text+ "&minFat=" + textBoxMinFat.Text + "&maxFat=" + textBoxMaxFat.Text + "&minCarbs=" + textBoxMinCarbs.Text + "&maxCarbs=" + textBoxMaxCarbs.Text + "&minCalories=" + textBoxMinCalories.Text;
+            rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxFood.Text + "&offset=0&number=10&maxCalories=" + textBoxMaxCalories.Text + "&minProtein=" + textBoxMinProtein.Text + "&maxProtein=" + textBoxMaxProtein.Text+ "&minFat=" + textBoxMinFat.Text + "&maxFat=" + textBoxMaxFat.Text + "&minCarbs=" + textBoxMinCarbs.Text + "&maxCarbs=" + textBoxMaxCarbs.Text + "&minCalories=" + textBoxMinCalories.Text;
             try{
 
                 f = rClient.makeFoodRequest();
@@ -71,8 +75,8 @@ namespace Main_Health_Partner
         }
 
 
-
-        private void buttonSearch_Click(object sender, EventArgs e)
+        //Creates a shedule with the given parameters. Calls the makeMealRequest from rClient
+        private void buttonSearchSchedule_Click(object sender, EventArgs e)
         {
             
             RESTClient rClient = new RESTClient();
@@ -80,34 +84,34 @@ namespace Main_Health_Partner
             
             try{
                 meal = rClient.makeMealRequest();
-                dataGridViewSessure.Rows.Clear();
-                dataGridViewSessure.Refresh();
+                dataGridViewSchedule.Rows.Clear();
+                dataGridViewSchedule.Refresh();
 
                 for (int i = 0; i <21; i++)
                 {
-                    meal[i].ToString();
+                    
                     DataGridViewRow row = new DataGridViewRow();
-                    row.CreateCells(dataGridViewSessure);
+                    row.CreateCells(dataGridViewSchedule);
                     row.Cells[0].Value = meal[i].getId();
                     row.Cells[1].Value = meal[i].getDay();
                     row.Cells[2].Value = meal[i].getName();
-                    dataGridViewSessure.Rows.Add(row);
+                    dataGridViewSchedule.Rows.Add(row);
                 }
-                int RowIndex = dataGridViewSessure.RowCount - 1;
-                DataGridViewRow R = dataGridViewSessure.Rows[RowIndex];
+                int RowIndex = dataGridViewSchedule.RowCount - 1;
+                DataGridViewRow R = dataGridViewSchedule.Rows[RowIndex];
             }catch{
                 return;
             }
         }
-        
-        private void dataGridViewSessure_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        //Shows a dialog box with extra information of the given recipe.
+        private void dataGridViewSchedule_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try{
                 RESTClient rClient = new RESTClient();
-                int rowindex = dataGridViewSessure.CurrentCell.RowIndex;
-                int columnindex = dataGridViewSessure.CurrentCell.ColumnIndex;
+                int rowindex = dataGridViewSchedule.CurrentCell.RowIndex;
+                int columnindex = dataGridViewSchedule.CurrentCell.ColumnIndex;
          
-                rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + dataGridViewSessure.Rows[rowindex].Cells[columnindex].Value.ToString()+ "/information"; 
+                rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + dataGridViewSchedule.Rows[rowindex].Cells[columnindex].Value.ToString()+ "/information"; 
                 RecipeInfo ri = rClient.makeRecipeInformationRequest();
                 Info_Recipe ir = new Info_Recipe();
                 ir.ShowDialog();
@@ -118,8 +122,8 @@ namespace Main_Health_Partner
             }
         }
         
-
-        private void button2_Click(object sender, EventArgs e)
+        //Searches for a recipe given the parameters.
+        private void buttonRecipeSearch(object sender, EventArgs e)
         {
             RESTClient rClient = new RESTClient();
             rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?diet=" + listBoxDiet.GetItemText(listBoxDiet.SelectedItem) + "&excludeIngredients=" + textBoxExIngredients.Text + "&intolerances=" + textBoxIntolarences.Text + "&number=10&offset=0&query=" + textBoxRecipe.Text + "&type=" + listBoxType.GetItemText(listBoxDiet.SelectedItem);
@@ -154,6 +158,7 @@ namespace Main_Health_Partner
             }
         }
 
+        //makes the customer info editable
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             textBoxAge.Enabled = true;
@@ -163,6 +168,7 @@ namespace Main_Health_Partner
             textBoxHeight.Enabled = true;
         }
 
+        //Updates the database user with the new user information
         private void buttonSave_Click(object sender, EventArgs e)
         {
             SqlConnection c = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True");
@@ -178,6 +184,7 @@ namespace Main_Health_Partner
             textBoxHeight.Enabled = false;
         }
 
+        //Some extra information about the given recipe
         private void dataGridViewRecipe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -198,32 +205,32 @@ namespace Main_Health_Partner
             }
         }
 
-        private void buttonSaveSessure_Click(object sender, EventArgs e)
+        //Saves the current users schedule to the database
+        private void buttonSaveSchedule_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True");
 
-            for (int i = 0; i < dataGridViewSessure.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridViewSchedule.Rows.Count - 1; i++)
             {
                     con.Open();
                     SqlCommand CmdSql = new SqlCommand("INSERT INTO dbo.program (id, day , food , uid) VALUES (@id, @day, @food, @uid)", con);
 
-                    CmdSql.Parameters.AddWithValue("@id", int.Parse(dataGridViewSessure.Rows[i].Cells[0].Value.ToString()));
-                    CmdSql.Parameters.AddWithValue("@day", dataGridViewSessure.Rows[i].Cells[1].Value.ToString());
-                    CmdSql.Parameters.AddWithValue("@food", dataGridViewSessure.Rows[i].Cells[2].Value.ToString());
+                    CmdSql.Parameters.AddWithValue("@id", int.Parse(dataGridViewSchedule.Rows[i].Cells[0].Value.ToString()));
+                    CmdSql.Parameters.AddWithValue("@day", dataGridViewSchedule.Rows[i].Cells[1].Value.ToString());
+                    CmdSql.Parameters.AddWithValue("@food", dataGridViewSchedule.Rows[i].Cells[2].Value.ToString());
                     CmdSql.Parameters.AddWithValue("@uid", int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString()));
                     CmdSql.ExecuteNonQuery();
                     con.Close();   
             }
         }
 
-        //Meal Plan attributes to search by
-        String timeFrame = "week", targetCalories = "3000", diet;
 
-        private void buttonLoad_Click(object sender, EventArgs e)
+        //Loads the users schedule to the database
+        private void buttonLoadSchedule_Click(object sender, EventArgs e)
         {
             string constring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True";
-            dataGridViewSessure.Rows.Clear();
-            dataGridViewSessure.Columns.Clear();
+            dataGridViewSchedule.Rows.Clear();
+            dataGridViewSchedule.Columns.Clear();
             using (SqlConnection con = new SqlConnection(constring))
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT dbo.program.id,dbo.program.day,dbo.program.food FROM dbo.program,dbo.myusers where dbo.program.uid=dbo.myusers.Id and dbo.myusers.username like '" + Login.recby+"'", con))
@@ -234,7 +241,7 @@ namespace Main_Health_Partner
                         using (DataTable dt = new DataTable())
                         {
                             sda.Fill(dt);
-                            dataGridViewSessure.DataSource = dt;
+                            dataGridViewSchedule.DataSource = dt;
                         }
                     }
                 }
@@ -254,7 +261,7 @@ namespace Main_Health_Partner
             returnid();
         }
         
-        
+        //Shows the About dialog box
         private void buttonAbout_Click(object sender, EventArgs e)
         {
             About ab = new About();
@@ -280,15 +287,15 @@ namespace Main_Health_Partner
                 while (reader.Read())
                 {
                     outputMessage += reader.GetValue(0) + "\n";
-                    getId_Sessure = Int32.Parse(reader.GetValue(0).ToString());
+                    getId_Schedule = Int32.Parse(reader.GetValue(0).ToString());
                 }
-               // MessageBox.Show(getId_Sessure +" " );
-                //don't forget to close your reader and connection
                 reader.Close();
                 conn.Close();
              
             }
         }
+
+
         void filldata()
         {
             using (SqlConnection c = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TestBase.mdf;Integrated Security=True"))
@@ -302,6 +309,8 @@ namespace Main_Health_Partner
                 }
             }
         }
+
+
         private void Form_Main_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'myDatabaseMyUsers.myusers' table. You can move, or remove it, as needed.
@@ -327,27 +336,12 @@ namespace Main_Health_Partner
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            RESTClient rClient = new RESTClient();
-            try{
-                rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/search?query=" + textBoxSearch.Text + "&offset=0&number=10&maxCalories=" + maxCalories + "&minProtein=" + minProtein + "&maxProtein=" + maxProtein + "&minFat=" + minFat + "&maxFat=" + maxFat + "&minCarbs=" + minCarbs + "&maxCarbs=" + maxCarbs + "&minCalories=" + minCalories;
 
-                f = rClient.makeFoodRequest();
-
-                for(int i = 0 ; i < 10 ; i++) {
-                    Console.WriteLine(f[i].toString());
-                }
-            }catch{
-                return;
-            }
-        }
-
-        public static int getId_Sessure
+        public static int getId_Schedule
         {
 
-            get { return Id_Sessure; }
-            set { Id_Sessure = value; }
+            get { return Id_Schedule; }
+            set { Id_Schedule = value; }
         }
 
 

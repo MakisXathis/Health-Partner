@@ -63,12 +63,13 @@ namespace Main_Health_Partner
         }
 
 
-        public void ToString()
+        public String ToString()
         {
-            Console.WriteLine("Id : " + id +
+           String s = "Id : " + id +
                 "\nName : " + name +
                 "\nReady in Minutes : " + minutes +
-                "\nNumer of Servings : " + servings);
+                "\nNumer of Servings : " + servings;
+            return s;
         }
     }
 }

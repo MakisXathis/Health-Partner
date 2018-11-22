@@ -46,16 +46,15 @@ namespace Main_Health_Partner
             return foodNutrients;
         }
 
-        public void toString()
+        public String toString()
         {
-            Console.WriteLine("Id : " + id + "\r\n");
+            String s="";
 
             foreach (KeyValuePair<string, String> pair in foodNutrients)
             {
-                Console.WriteLine("{0} : {1}", pair.Key, pair.Value);
-
+               s += pair.Key+" : "+pair.Value+"\r\n";
             }
-
+            return s;
         }
     }
 }
