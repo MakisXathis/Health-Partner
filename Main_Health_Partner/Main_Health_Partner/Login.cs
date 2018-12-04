@@ -53,7 +53,7 @@ namespace Main_Health_Partner
                     {
                         sql.Open();
                         SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM dbo.myusers " +
-                                            "WHERE username like '%"+user+"%' and password like '%"+passwd+"%'", sql);
+                                            "WHERE username like '%"+user+ "%' and password like '%" + passwd + "%'", sql);
                         cmd.Parameters.AddWithValue("@username", textBoxUsername.Text);
                         cmd.Parameters.AddWithValue("@password", textBoxPassword.Text);
                         int result = (int)cmd.ExecuteScalar();
@@ -69,12 +69,12 @@ namespace Main_Health_Partner
                         }
                         else
                         {
-                            MessageBox.Show("Incorrect login");
+                            MessageBox.Show("Wrong username/password");
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Wrong Username/Password:");
+                        MessageBox.Show(ex.Message);
                     }
                 }
             

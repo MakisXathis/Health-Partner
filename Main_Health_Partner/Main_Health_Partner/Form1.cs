@@ -121,7 +121,7 @@ namespace Main_Health_Partner
                 return;
             }
         }
-        
+
         //Searches for a recipe given the parameters.
         private void buttonRecipeSearch(object sender, EventArgs e)
         {
@@ -183,6 +183,33 @@ namespace Main_Health_Partner
             textBoxWeight.Enabled = false;
             textBoxHeight.Enabled = false;
         }
+
+
+        private void dataGridViewFood_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine("Method call");
+            RESTClient rClient = new RESTClient();
+            int rowindex = dataGridViewFood.CurrentCell.RowIndex;
+            int columnindex = dataGridViewFood.CurrentCell.ColumnIndex;
+            try {
+                rClient.endPoint = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/products/" + dataGridViewFood.Rows[rowindex].Cells[columnindex].Value.ToString();
+
+                Nutrients nutrient = rClient.makeNutrientsRequest();
+
+                NutritionInfo ni = new NutritionInfo();
+                
+                ni.setCalories(nutrient.getfoodNutrients()["calories"]);
+                ni.setFat(nutrient.getfoodNutrients()["fat"]);
+                ni.setProtein(nutrient.getfoodNutrients()["protein"]);
+                ni.setCarbs(nutrient.getfoodNutrients()["carbs"]);
+                ni.ShowDialog();
+            }
+            catch
+            {
+
+            }
+        }
+
 
         //Some extra information about the given recipe
         private void dataGridViewRecipe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

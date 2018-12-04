@@ -643,6 +643,7 @@
             this.dataGridViewFood.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewFood.Size = new System.Drawing.Size(793, 315);
             this.dataGridViewFood.TabIndex = 3;
+            this.dataGridViewFood.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFood_CellDoubleClick);
             // 
             // Id
             // 
